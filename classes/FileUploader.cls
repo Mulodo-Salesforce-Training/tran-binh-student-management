@@ -1,7 +1,7 @@
 public class FileUploader 
 {
-    public string nameFile{get;set;}
-    public Blob contentFile{get;set;}
+    public string nameFile {get;set;}
+    public Blob contentFile {get;set;}
     String[] filelines = new String[]{};
     List<Student__c> stdstoupload;
     

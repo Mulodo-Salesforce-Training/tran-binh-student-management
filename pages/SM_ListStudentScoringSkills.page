@@ -15,11 +15,10 @@
                     <apex:inputText styleClass="slds-input" style="width:50px;" value="{!customListSize}"/>
                     <label>Records/Page </label>
                     <apex:commandButton styleClass="slds-button slds-button_neutral" reRender="StudentTable, PaginationButton" value="Change size"/>
-                    <button class="slds-button slds-button_neutral">
-                        <center><a href="apex/SM_RegisterStudentScoringSkill">
-                            New
-                        </a></center>
-                    </button>
+                    <apex:outputLink value="{!URLFOR($Action.Student_Scoring_Skills__c.New)}" styleClass="slds-button slds-button_neutral">
+                                New
+                    </apex:outputLink>
+                    <a class="slds-button slds-button_neutral" href="apex/SM_BatchStudentSkill">Score All Students</a>
                 </apex:form>
             </apex:pageBlock>
             <!--Wrap all div in this to apply stylesheet from slds-->
@@ -84,25 +83,25 @@
                                         <th scope="col" data-label="Index">
                                             {!index}
                                         </th>
-                                        
+
                                         <!--Name-->
                                         <td data-label="{!$ObjectType.Student_Scoring_Skills__c.fields.Name.Label}">
                                             <div class="slds-truncate" title="{! c.Name}">
                                                 {! c.Name}
                                             </div>
                                         </td>
-                                        
+
                                         <!--Student ID-->
                                         <td data-label="{!$ObjectType.Student_Scoring_Skills__c.fields.Student_ID__c.Label}">
-                                            <div class="slds-truncate" title="{! c.Student_ID__r.Name}">
-                                                {! c.Student_ID__r.Name}
+                                            <div class="slds-truncate" title="{! c.Student_ID__r.Last_Name__c}">
+                                                {! c.Student_ID__r.Last_Name__c}
                                             </div>
                                         </td>
-                                        
+
                                         <!--Student Skill-->
                                         <td scope="row" data-label="{!$ObjectType.Student_Scoring_Skills__c.fields.Student_Skill__c.Label}">
-                                            <div class="slds-truncate" title="{! c.Student_Skill__r.Name}">
-                                                {! c.Student_Skill__r.Name}
+                                            <div class="slds-truncate" title="{! c.Student_Skill__r.Skill__c}">
+                                                {! c.Student_Skill__r.Skill__c}
                                             </div>
                                         </td>
                                         <!--Points-->

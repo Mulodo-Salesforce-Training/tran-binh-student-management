@@ -1,5 +1,5 @@
 trigger SM_TriggerStudentActive on Student_Scoring_Skill__c (after update) {
-    if ( Trigger.isUpdate && Trigger.isAfter ) {
+    if ( Trigger.isAfter ) {
 
         //Initialize student list
         List<Student_Scoring_Skill__c> statusActive   = new List<Student_Scoring_Skill__c>();
@@ -27,7 +27,12 @@ trigger SM_TriggerStudentActive on Student_Scoring_Skill__c (after update) {
                 updatePoints.add( statusScore );
             }
 
-            update updatePoints;
+            try {
+                update updatePoints;
+            } catch(DmlException e) {
+                e.getMessage();
+                System.debug('The following exception has occurred: ' + e.getMessage());
+            }
         }
 
         //update points when status not disable.
@@ -40,7 +45,13 @@ trigger SM_TriggerStudentActive on Student_Scoring_Skill__c (after update) {
                 updatePoints.add( statusScore );
             }
 
-            update updatePoints;
+            try {
+                update updatePoints;
+            } catch(DmlException e) {
+                e.getMessage();
+                System.debug('The following exception has occurred: ' + e.getMessage());
+            }
+
         }
     }
 }

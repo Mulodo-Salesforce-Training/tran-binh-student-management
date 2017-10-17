@@ -1,1 +1,0 @@
-# tran-binh-student-management

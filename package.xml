@@ -20,7 +20,6 @@
     </types>
     <types>
         <members>SM_TriggerStudentActive</members>
-        <members>SM_TriggerStudentLevel</members>
         <members>SM_TriggerStudentStatus</members>
         <members>SM_TriggerUpdateStudentPoints</members>
         <name>ApexTrigger</name>
@@ -39,6 +38,14 @@
         <members>Student_Scoring_Skills__c</members>
         <members>Upload_file</members>
         <name>CustomTab</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>Flow</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>FlowDefinition</name>
     </types>
     <types>
         <members>*</members>

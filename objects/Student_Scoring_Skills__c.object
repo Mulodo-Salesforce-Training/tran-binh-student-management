@@ -111,6 +111,19 @@
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Student Scoring Skills</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Database_Network</fullName>
+        <active>true</active>
+        <description>Database &amp; Network</description>
+        <label>Database &amp; Network</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Web_Aplication</fullName>
+        <active>true</active>
+        <description>Web Aplication</description>
+        <label>Web Aplication</label>
+    </recordTypes>
     <searchLayouts>
         <customTabListAdditionalFields>Student_ID__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>Student_Skill__c</customTabListAdditionalFields>

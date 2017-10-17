@@ -15,11 +15,9 @@
                     <apex:inputText styleClass="slds-input" style="width:50px;" value="{!customListSize}"/>
                     <label>Records/Page </label>
                     <apex:commandButton styleClass="slds-button slds-button_neutral" reRender="StudentTable, PaginationButton" value="Change size"/>
-                    <button class="slds-button slds-button_neutral">
-                        <center><a href="apex/SM_RegisterStudentScoringSkill">
-                            New
-                            </a></center>
-                    </button>
+                    <apex:outputLink value="{!URLFOR($Action.Student_Scoring_Skill__c.New)}" styleClass="slds-button slds-button_neutral">
+                                New
+                    </apex:outputLink>
                 </apex:form>
             </apex:pageBlock>
             <!--Wrap all div in this to apply stylesheet from slds-->

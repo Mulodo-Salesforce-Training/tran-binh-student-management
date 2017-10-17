@@ -1,4 +1,5 @@
 trigger SM_TriggerUpdateStudentPoints on Student_Scoring_Skills__c (after insert) {
+
     if ( Trigger.isAfter && Trigger.isInsert ) {
         //Initialize List Id of Student_Scoring_Skills__c
         List< Id > listStatusScoreId                 = new List< Id >();
@@ -11,15 +12,24 @@ trigger SM_TriggerUpdateStudentPoints on Student_Scoring_Skills__c (after insert
             listStatusScoreId.add(std.Id);
         }
         //Select Points and status for update Student_Scoring_Skills__c
-        statusPoints = [SELECT Points__c, Student_Skill__r.Active__c, Student_Skill__r.Points__c, Student_ID__r.Status__c 
+        statusPoints = [SELECT Points__c, Student_Skill__r.Active__c, Student_Skill__r.Points__c, Student_ID__r.Status__c
                         FROM Student_Scoring_Skills__c WHERE Id IN :listStatusScoreId];
-        
+
         for ( Student_Scoring_Skills__c statusScore : statusPoints ) {
             if ( statusScore.Student_Skill__r.Active__c && !statusScore.Student_ID__r.Status__c.equalsIgnoreCase('Disabled') ) {
                 statusScore.Points__c = statusScore.Student_Skill__r.Points__c;
                 updatePoints.add( statusScore );
+            } else {
+                statusScore.Points__c = 0;
+                updatePoints.add( statusScore );
             }
         }
-        update updatePoints;
+
+         try {
+            update updatePoints;
+        } catch(DmlException e) {
+            e.getMessage();
+            System.debug('The following exception has occurred: ' + e.getMessage());
+        }
     }
 }

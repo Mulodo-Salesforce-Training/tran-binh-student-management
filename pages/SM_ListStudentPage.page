@@ -17,11 +17,13 @@
                     <apex:inputText styleClass="slds-input" style="width:50px;" value="{!customListSize}"/>
                     <label>Records/Page </label>
                     <apex:commandButton styleClass="slds-button slds-button_neutral" reRender="StudentTable, PaginationButton" value="Change size"/>
-                    <button class="slds-button slds-button_neutral">
-                        <center><a href="apex/MR_StudentRegister">
-                            New
-                            </a></center>
-                    </button>
+                    <apex:outputLink value="{!URLFOR($Action.Student__c.New)}" styleClass="slds-button slds-button_neutral">
+                        New
+                    </apex:outputLink>
+                    <a class="slds-button slds-button_neutral" href="apex/UploadAccounts">Import</a>
+                    <apex:outputLink value="{!URLFOR($Action.Student_Scoring_Skill__c.New)}" styleClass="slds-button slds-button_neutral">
+                        Change Status
+                    </apex:outputLink>
                 </apex:form>
             </apex:pageBlock>
             <!--Wrap all div in this to apply stylesheet from slds-->
@@ -38,7 +40,7 @@
                             </div>
                         </div>
 
-                        <apex:pageBlock id="candidate_list_table">
+                        <apex:pageBlock id="student_list_table">
                             <apex:outputPanel id="StudentTable">
                             <!--LIST STUDENT TABLE-->
                             <table class="slds-table slds-table_bordered slds-table_cell-buffer">
@@ -49,10 +51,23 @@
                                             &nbsp;
                                         </div>
                                     </th>
+
+                                     <!--Select checkbox-->
+                                    <th scope="col">
+                                        <div class="slds-truncate" title="Checkbox">
+                                            Checkbox
+                                        </div>
+                                    </th>
                                     <!--NAME-->
                                     <th scope="col">
                                         <div class="slds-truncate" title="{!$ObjectType.Student__c.fields.Name.Label}">
                                             {!$ObjectType.Student__c.fields.Name.Label}
+                                        </div>
+                                    </th>
+                                    <!--LAST NAME-->
+                                    <th scope="col">
+                                        <div class="slds-truncate" title="{!$ObjectType.Student__c.fields.Last_Name__c.Label}">
+                                            {!$ObjectType.Student__c.fields.Last_Name__c.Label}
                                         </div>
                                     </th>
                                     <!--FIRST NAME-->
@@ -92,11 +107,6 @@
                                         </div>
                                     </th>
                                     <th scope="col">
-                                        <div class="slds-truncate" title="Image">
-                                           Image
-                                        </div>
-                                    </th>
-                                    <th scope="col">
                                         <div class="slds-truncate" title="Info Weather">
                                            Info Weather
                                         </div>
@@ -114,19 +124,29 @@
                                         <th scope="col" data-label="Index">
                                             {!index}
                                         </th>
+                                        <!--Select checkbox-->
+                                        <td data-label="{!$ObjectType.Student__c.fields.Birthday__c.Label}">
+                                            <input type="checkbox" name="active" id="active"/>
+                                        </td>
                                         <!--NAME-->
                                         <td scope="col" data-label="{!$ObjectType.Student__c.fields.Name.Label}">
                                             <div class="slds-truncate" title="{! c.Name}">
                                                 <apex:commandLink action="{!URLFOR($Action.Student__c.View, c.Id)}" value="{!c.Name}"/>
                                             </div>
                                         </td>
-                                        <!--FIRST NAME-->
+                                         <!--Name-->
+                                        <td scope="row" data-label="{!$ObjectType.Student__c.fields.Country__c.Label}">
+                                            <div class="slds-truncate" title="{! c.Last_Name__c}">
+                                                {! c.Last_Name__c}
+                                            </div>
+                                        </td>
+                                        <!--Birthday-->
                                         <td data-label="{!$ObjectType.Student__c.fields.Birthday__c.Label}">
                                             <div class="slds-truncate" title="{! c.Birthday__c}">
                                                 {! YEAR(c.Birthday__c)}
                                             </div>
                                         </td>
-                                        <!--LAST NAME-->
+                                        <!--Country-->
                                         <td scope="row" data-label="{!$ObjectType.Student__c.fields.Country__c.Label}">
                                             <div class="slds-truncate" title="{! c.Country__c}">
                                                 {! c.Country__c}
@@ -156,16 +176,10 @@
                                                 {! c.Scores__c}
                                             </div>
                                         </td>
-                                        <!--CUSTOM IMAGE-->
-                                        <td scope="col" data-label="Image">
-                                            <div class="slds-truncate" title="Image">
-                                                <apex:commandLink action="{!URLFOR($Page.UploadImage,null, [ id=c.Id ])}" value="Upload Image"/>
-                                            </div>
-                                        </td>
                                          <!--CUSTOM ACTION-->
                                         <td scope="col" data-label="View Goohle Map">
                                             <div class="slds-truncate" title="View Goohle Map">
-                                                <apex:commandLink action="{!URLFOR($Page.CandidateWeatherControllerCC,null, [ id=c.Id ])}" value="View Goohle Map"/>
+                                                <apex:commandLink action="null" value="View Goohle Map"/>
                                             </div>
                                         </td>
                                     </tr>

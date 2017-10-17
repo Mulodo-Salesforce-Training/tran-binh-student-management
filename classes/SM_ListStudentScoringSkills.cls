@@ -4,7 +4,7 @@ public with sharing class SM_ListStudentScoringSkills {
     private Integer count;
     private Integer totalSize;
     public String action { get; set; }
-    
+
     public string FileId { get; set; }
     public String getFileId;
     public boolean con { get; set; }
@@ -19,7 +19,7 @@ public with sharing class SM_ListStudentScoringSkills {
             if ( math.mod( count, customListSize ) != 0 ) {
                 count -= math.mod( count, customListSize );
             }
-            return [SELECT Name, Points__c, Student_ID__r.Name, Student_Skill__r.Name
+            return [SELECT Name, Points__c, Student_ID__r.Name, Student_ID__r.Last_Name__c, Student_Skill__r.Name, Student_Skill__r.Skill__c
                     FROM Student_Scoring_Skills__c
                     LIMIT: customListSize
                     OFFSET: count];
@@ -32,32 +32,32 @@ public with sharing class SM_ListStudentScoringSkills {
         count               = 0;
         customListSize      = LIST_SIZE_PAGE;
     }
-    
+
     //result when click button First, Previous, Next, End
      public PageReference selectAction () {
-         
+
          //get paramater from apex with action click
          String action = Apexpages.currentPage().getParameters().get('paramValue');
-         
+
         if(action == 'First') {
            count = 0;
         }
-         
+
         if(action == 'Previous') {
            count -= customListSize;
         }
-         
+
         if(action == 'Next') {
            count += customListSize;
         }
-         
+
         if(action == 'End') {
             Integer mod = math.mod( totalSize, customListSize );
         	count = mod != 0 ? totalSize - mod : totalSize - customListSize;
         }
         return null;
     }
-    
+
     // This will disable the previous and first buttons
     public Boolean getDisablePrevious () {
         return count > 0 ? false : true;
@@ -70,7 +70,7 @@ public with sharing class SM_ListStudentScoringSkills {
         }
             return true;
     }
-    
+
     // This will get current page
     public Integer getCurrentPage () {
         return count / customListSize + 1;
@@ -85,7 +85,7 @@ public with sharing class SM_ListStudentScoringSkills {
         }
         return totalSize / customListSize;
     }
-    
+
     //This will get total record
     public Integer getTotalRecord () {
         return totalSize;
