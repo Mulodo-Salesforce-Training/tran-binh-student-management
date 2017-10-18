@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
+        <members>BatchUpdatePointsStudent</members>
         <members>FileUploader</members>
+        <members>SM_ChangeStatusStudent</members>
+        <members>SM_ListStudent</members>
         <members>SM_ListStudentPage</members>
         <members>SM_ListStudentScoringSkill</members>
         <members>SM_ListStudentScoringSkills</members>
@@ -10,6 +13,7 @@
         <name>ApexClass</name>
     </types>
     <types>
+        <members>SM_ListStudent</members>
         <members>SM_ListStudentPage</members>
         <members>SM_ListStudentScoringSkill</members>
         <members>SM_ListStudentScoringSkills</members>
@@ -21,6 +25,7 @@
     <types>
         <members>SM_TriggerStudentActive</members>
         <members>SM_TriggerStudentStatus</members>
+        <members>SM_TriggerUpdatePointsStudent</members>
         <members>SM_TriggerUpdateStudentPoints</members>
         <name>ApexTrigger</name>
     </types>
