@@ -49,11 +49,7 @@
 
                                     <td class="slds-text-align_right" role="gridcell">
                                         <span class="slds-checkbox">
-                                          <input type="checkbox" name="options" ng-attr-id="{{'checkbox-' + $index}}"  ng-attr-checked="{{selectedList.has(student.Id)}}" ng-click="onSelectStudent(student.Id)"/>
-                                          <label class="slds-checkbox__label" ng-attr-for="{{'checkbox-'+ $index}}">
-                                            <span class="slds-checkbox_faux"></span>
-                                            <span class="slds-form-element__label slds-assistive-text">Select item 1</span>
-                                          </label>
+                                            <input type="checkbox" name="options"/>
                                         </span>
                                     </td>
                                     <!--NAME-->
@@ -123,7 +119,7 @@
                                             {!index}
                                         </th>
                                         <th>
-                                            <input type="checkbox" name="options" ng-attr-id="{!index + 1}"  ng-attr-checked="{{selectedList.has(student.Id)}}" ng-click="onSelectStudent(student.Id)"/>
+                                            <input type="checkbox" name="options" ng-attr-checked="{{selectedList.has(student.Id)}}" ng-click="onSelectStudent(student.Id)"/>
                                         </th>
                                         <!--NAME-->
                                         <td scope="col" data-label="{!$ObjectType.Student__c.fields.Name.Label}">

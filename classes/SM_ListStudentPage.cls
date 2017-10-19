@@ -118,6 +118,21 @@ global with sharing class SM_ListStudentPage {
                 return false;
             }
         }
-        return true; // everything ok
+        return true;
     }
+    
+    // method to execute batch in VF Page
+	global static void batchStudentLevel() {
+		if (System.isBatch()) {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.FATAL, 'This action has already executed'));
+			return;
+		}
+		try {
+			System.scheduleBatch(new SM_BatchStudentLevel(), 'Student Level and Skill Executed',1);
+		} catch  (AsyncException e) {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.FATAL, 'This action has already been scheduled. Detail Message: ' + e.getMessage()));
+			return;
+		}
+		ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.INFO, 'Student Level and Skill will be execute'));
+	}
 }

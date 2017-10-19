@@ -13,10 +13,6 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>SM_ListStudent</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
         <apexClass>SM_ListStudentPage</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -107,10 +103,6 @@
         <field>Student__c.Zip_Postal_Code__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <pageAccesses>
-        <apexPage>SM_ListStudent</apexPage>
-        <enabled>false</enabled>
-    </pageAccesses>
     <pageAccesses>
         <apexPage>SM_ListStudentPage</apexPage>
         <enabled>false</enabled>

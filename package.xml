@@ -4,7 +4,6 @@
         <members>BatchUpdatePointsStudent</members>
         <members>FileUploader</members>
         <members>SM_ChangeStatusStudent</members>
-        <members>SM_ListStudent</members>
         <members>SM_ListStudentPage</members>
         <members>SM_ListStudentScoringSkill</members>
         <members>SM_ListStudentScoringSkills</members>
@@ -13,7 +12,6 @@
         <name>ApexClass</name>
     </types>
     <types>
-        <members>SM_ListStudent</members>
         <members>SM_ListStudentPage</members>
         <members>SM_ListStudentScoringSkill</members>
         <members>SM_ListStudentScoringSkills</members>

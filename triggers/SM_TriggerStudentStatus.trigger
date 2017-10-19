@@ -1,12 +1,12 @@
-trigger SM_TriggerStudentStatus on Student__c ( after update ) {
-    if ( Trigger.isAfter ) {
+trigger SM_TriggerStudentStatus on Student__c ( after insert, after update ) {
+    
         //Initialize student list
         List<Student__c> statusDisable                  = new List<Student__c>();
         List<Student__c> statusNotDisable               = new List<Student__c>();
         //Initialize Student Scoring Skills list
         List<Student_Scoring_Skills__c> updatePoints    = new List<Student_Scoring_Skills__c>();
         List<Student_Scoring_Skills__c> statusPoints    = new List<Student_Scoring_Skills__c>();
-
+	if ( Trigger.isAfter ) {
         //add in list with status of student
         for ( Student__c std: Trigger.new )
         {
