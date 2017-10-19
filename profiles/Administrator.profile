@@ -155,10 +155,6 @@
         <visible>true</visible>
     </recordTypeVisibilities>
     <tabVisibilities>
-        <tab>List_Student</tab>
-        <visibility>DefaultOff</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
         <tab>List_Student_Scoring_Skill</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
@@ -168,6 +164,14 @@
     </tabVisibilities>
     <tabVisibilities>
         <tab>Register_Student_Scoring_Skill</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>SM_Student_List</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>Student_Scoring_Skill__c</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>

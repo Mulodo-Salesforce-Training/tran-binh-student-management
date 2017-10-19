@@ -21,6 +21,7 @@
         <name>ApexPage</name>
     </types>
     <types>
+        <members>SM_DoubleStudentSkill</members>
         <members>SM_TriggerStudentActive</members>
         <members>SM_TriggerStudentStatus</members>
         <members>SM_TriggerUpdatePointsStudent</members>
@@ -34,10 +35,11 @@
         <name>CustomObject</name>
     </types>
     <types>
-        <members>List_Student</members>
         <members>List_Student_Scoring_Skill</members>
         <members>List_Student_Scoring_Skills</members>
         <members>Register_Student_Scoring_Skill</members>
+        <members>SM_Student_List</members>
+        <members>Student_Scoring_Skill__c</members>
         <members>Student_Scoring_Skills__c</members>
         <members>Upload_file</members>
         <name>CustomTab</name>
