@@ -29,7 +29,6 @@ global with sharing class SM_ListStudentPage {
 
     // Set the total size in the constructor
     public SM_ListStudentPage () {
-        TotalRecord         = [SELECT Count() FROM Student__c];
         totalSize           = [SELECT count() FROM Student__c];
         count               = 0;
         customListSize      = LIST_SIZE_PAGE;
@@ -43,17 +42,11 @@ global with sharing class SM_ListStudentPage {
 
         if(action == 'First') {
            count = 0;
-        }
-
-        if(action == 'Previous') {
+        } else if(action == 'Previous') {
            count -= customListSize;
-        }
-
-        if(action == 'Next') {
+        } else if(action == 'Next') {
            count += customListSize;
-        }
-
-        if(action == 'End') {
+        } else if(action == 'End') {
             Integer mod = math.mod( totalSize, customListSize );
         	count = mod != 0 ? totalSize - mod : totalSize - customListSize;
         }
@@ -88,7 +81,7 @@ global with sharing class SM_ListStudentPage {
         return totalSize / customListSize;
     }
 
-    //This will get total record
+    // This will get total record
     public Integer getTotalRecord () {
         return totalSize;
     }
@@ -98,35 +91,21 @@ global with sharing class SM_ListStudentPage {
         pageNum *= pageSize;
         return [SELECT Name, First_Name__c, Last_Name__c, Status__c FROM Student__c LIMIT :pageSize OFFSET :pageNum];
     }
-//  @RemoteAction
+
+    // @RemoteAction
     global static String getStatusPickList() {
         Schema.DescribeFieldResult statusField = Student__c.Status__c.getDescribe();
         List<Schema.PicklistEntry> skillPickList = statusField.getPicklistValues();
         return JSON.serialize(skillPickList);
     }
 
-    @RemoteAction
-    global static Boolean changeSelectedStatus(String JSONIdList, String status) {
-        List<Id> idList = (List<Id>)JSON.deserialize(JSONIdList, List<Id>.class); // deserialize JSONId List
-        List<Student__c> updateStudent = [SELECT Status__c FROM Student__c WHERE Id IN: idList AND Status__c !=: status]; // select list of student with id in {idList} and status not equals to {status} yes
-        for(Student__c student: updateStudent) {
-            student.Status__c = status;
-        }
-        List<Database.SaveResult> res = Database.update(updateStudent); // update after complete
-        for (Database.SaveResult each: res) {
-            if (each.getErrors().size() > 0 ) {
-                return false;
-            }
-        }
-        return true;
-    }
-    
     // method to execute batch in VF Page
 	global static void batchStudentLevel() {
 		if (System.isBatch()) {
 			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.FATAL, 'This action has already executed'));
 			return;
 		}
+
 		try {
 			System.scheduleBatch(new SM_BatchStudentLevel(), 'Student Level and Skill Executed',1);
 		} catch  (AsyncException e) {

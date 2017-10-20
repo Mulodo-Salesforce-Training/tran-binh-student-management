@@ -12,8 +12,7 @@ trigger SM_TriggerUpdateStudentPoints on Student_Scoring_Skills__c (after insert
             listStatusScoreId.add(std.Id);
         }
         //Select Points and status for update Student_Scoring_Skills__c
-        statusPoints = [SELECT Points__c, Student_Skill__r.Active__c, Student_Skill__r.Points__c, Student_ID__r.Status__c
-                        FROM Student_Scoring_Skills__c WHERE Id IN :listStatusScoreId];
+        statusPoints = [SELECT Points__c, Student_Skill__r.Active__c, Student_Skill__r.Points__c, Student_ID__r.Status__c FROM Student_Scoring_Skills__c WHERE Id IN :listStatusScoreId];
 
         for ( Student_Scoring_Skills__c statusScore : statusPoints ) {
             if ( statusScore.Student_Skill__r.Active__c && !statusScore.Student_ID__r.Status__c.equalsIgnoreCase('Disabled') ) {
@@ -25,7 +24,7 @@ trigger SM_TriggerUpdateStudentPoints on Student_Scoring_Skills__c (after insert
             }
         }
 
-         try {
+        try {
             update updatePoints;
         } catch(DmlException e) {
             e.getMessage();

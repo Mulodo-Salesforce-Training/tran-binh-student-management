@@ -1,15 +1,15 @@
-public with sharing class SM_RegisterStudentScoringSkill {    
+public with sharing class SM_RegisterStudentScoringSkill {
     // procedure constructor
     public SM_RegisterStudentScoringSkill(ApexPages.StandardController controller) {
 
 	}
-    
-   @RemoteAction
+
+    @RemoteAction
     public static String toRegister ( Boolean  active,
                                       String   skill,
                                       Decimal  points
                                     ) {
-                                          
+
         Student_Scoring_Skill__c studentSkills = new Student_Scoring_Skill__c();
         studentSkills.Active__c                = active;
         studentSkills.Skill__c                 = skill;

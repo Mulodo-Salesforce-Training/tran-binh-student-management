@@ -2,11 +2,11 @@
     <!--ADD XMLNS TO USE SVG FROM VISUALFORCE-->
     <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
         <head>
-          <meta charset="utf-8"/>
-          <meta http-equiv="x-ua-compatible" content="ie=edge"/>
-          <title>Salesforce Lightning Design System Trailhead Module</title>
-          <meta name="viewport" content="width=device-width, initial-scale=1"/>
-          <apex:slds />
+            <meta charset="utf-8"/>
+            <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+            <title>Salesforce Lightning Design System Trailhead Module</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1"/>
+            <apex:slds />
         </head>
 
         <body>
@@ -16,7 +16,7 @@
                     <label>Records/Page </label>
                     <apex:commandButton styleClass="slds-button slds-button_neutral" reRender="StudentTable, PaginationButton" value="Change size"/>
                     <apex:outputLink value="{!URLFOR($Action.Student_Scoring_Skills__c.New)}" styleClass="slds-button slds-button_neutral">
-                                New
+                        New
                     </apex:outputLink>
                     <a class="slds-button slds-button_neutral" href="apex/SM_BatchStudentSkill">Score All Students</a>
                 </apex:form>
@@ -37,83 +37,83 @@
 
                         <apex:pageBlock id="student_list_table">
                             <apex:outputPanel id="StudentTable">
-                            <!--LIST STUDENT TABLE-->
-                            <table class="slds-table slds-table_bordered slds-table_cell-buffer">
-                                <thead>
-                                    <tr class="slds-text-title_caps">
-                                    <th scope="col">
-                                        <div class="slds-truncate">
-                                            &nbsp;
-                                        </div>
-                                    </th>
-                                    <!--Name-->
-                                    <th scope="col">
-                                        <div class="slds-truncate" title="{!$ObjectType.Student_Scoring_Skills__c.fields.Name.Label}">
-                                            {!$ObjectType.Student_Scoring_Skills__c.fields.Name.Label}
-                                        </div>
-                                    </th>
-                                    <!--Student ID-->
-                                    <th scope="col">
-                                        <div class="slds-truncate" title="{!$ObjectType.Student_Scoring_Skills__c.fields.Student_ID__c.Label}">
-                                            {!$ObjectType.Student_Scoring_Skills__c.fields.Student_ID__c.Label}
-                                        </div>
-                                    </th>
-                                    <!--Student Skill-->
-                                    <th scope="col">
-                                        <div class="slds-truncate" title="{!$ObjectType.Student_Scoring_Skills__c.fields.Student_Skill__c.Label}">
-                                            {!$ObjectType.Student_Scoring_Skills__c.fields.Student_Skill__c.Label}
-                                        </div>
-                                    </th>
-                                    <!--Points-->
-                                    <th scope="col">
-                                        <div class="slds-truncate" title="{!$ObjectType.Student_Scoring_Skills__c.fields.Points__c.Label}">
-                                            {!$ObjectType.Student_Scoring_Skills__c.fields.Points__c.Label}
-                                        </div>
-                                    </th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <!--USE TO CREATE AN INDEX COLUMN-->
-                                <apex:variable var="index" value="{!0}"/>
-                                <!--LOOP THROUGH RECORDSETVARS-->
-                                <apex:repeat var="c" value="{! students}">
-                                    <!--AUTO INCREMENT index-->
-                                    <apex:variable var="index" value="{!index + 1}"/>
-                                    <tr>
-                                        <th scope="col" data-label="Index">
-                                            {!index}
-                                        </th>
+                                <!--LIST STUDENT TABLE-->
+                                <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                                    <thead>
+                                        <tr class="slds-text-title_caps">
+                                            <th scope="col">
+                                                <div class="slds-truncate">
+                                                    &nbsp;
+                                                </div>
+                                            </th>
+                                            <!--Name-->
+                                            <th scope="col">
+                                                <div class="slds-truncate" title="{!$ObjectType.Student_Scoring_Skills__c.fields.Name.Label}">
+                                                    {!$ObjectType.Student_Scoring_Skills__c.fields.Name.Label}
+                                                </div>
+                                            </th>
+                                            <!--Student ID-->
+                                            <th scope="col">
+                                                <div class="slds-truncate" title="{!$ObjectType.Student_Scoring_Skills__c.fields.Student_ID__c.Label}">
+                                                    {!$ObjectType.Student_Scoring_Skills__c.fields.Student_ID__c.Label}
+                                                </div>
+                                            </th>
+                                            <!--Student Skill-->
+                                            <th scope="col">
+                                                <div class="slds-truncate" title="{!$ObjectType.Student_Scoring_Skills__c.fields.Student_Skill__c.Label}">
+                                                    {!$ObjectType.Student_Scoring_Skills__c.fields.Student_Skill__c.Label}
+                                                </div>
+                                            </th>
+                                            <!--Points-->
+                                            <th scope="col">
+                                                <div class="slds-truncate" title="{!$ObjectType.Student_Scoring_Skills__c.fields.Points__c.Label}">
+                                                    {!$ObjectType.Student_Scoring_Skills__c.fields.Points__c.Label}
+                                                </div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!--USE TO CREATE AN INDEX COLUMN-->
+                                        <apex:variable var="index" value="{!0}"/>
+                                        <!--LOOP THROUGH RECORDSETVARS-->
+                                        <apex:repeat var="c" value="{! students}">
+                                            <!--AUTO INCREMENT index-->
+                                            <apex:variable var="index" value="{!index + 1}"/>
+                                            <tr>
+                                                <th scope="col" data-label="Index">
+                                                    {!index}
+                                                </th>
 
-                                        <!--Name-->
-                                        <td data-label="{!$ObjectType.Student_Scoring_Skills__c.fields.Name.Label}">
-                                            <div class="slds-truncate" title="{! c.Name}">
-                                                {! c.Name}
-                                            </div>
-                                        </td>
+                                                <!--Name-->
+                                                <td data-label="{!$ObjectType.Student_Scoring_Skills__c.fields.Name.Label}">
+                                                    <div class="slds-truncate" title="{! c.Name}">
+                                                        {! c.Name}
+                                                    </div>
+                                                </td>
 
-                                        <!--Student ID-->
-                                        <td data-label="{!$ObjectType.Student_Scoring_Skills__c.fields.Student_ID__c.Label}">
-                                            <div class="slds-truncate" title="{! c.Student_ID__r.Last_Name__c}">
-                                                {! c.Student_ID__r.Last_Name__c}
-                                            </div>
-                                        </td>
+                                                <!--Student ID-->
+                                                <td data-label="{!$ObjectType.Student_Scoring_Skills__c.fields.Student_ID__c.Label}">
+                                                    <div class="slds-truncate" title="{! c.Student_ID__r.Last_Name__c}">
+                                                        {! c.Student_ID__r.Last_Name__c}
+                                                    </div>
+                                                </td>
 
-                                        <!--Student Skill-->
-                                        <td scope="row" data-label="{!$ObjectType.Student_Scoring_Skills__c.fields.Student_Skill__c.Label}">
-                                            <div class="slds-truncate" title="{! c.Student_Skill__r.Skill__c}">
-                                                {! c.Student_Skill__r.Skill__c}
-                                            </div>
-                                        </td>
-                                        <!--Points-->
-                                        <td scope="row" data-label="{!$ObjectType.Student_Scoring_Skills__c.fields.Points__c.Label}">
-                                            <div class="slds-truncate" title="{! c.Points__c}">
-                                                {! c.Points__c}
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </apex:repeat>
-                                </tbody>
-                            </table>
+                                                <!--Student Skill-->
+                                                <td scope="row" data-label="{!$ObjectType.Student_Scoring_Skills__c.fields.Student_Skill__c.Label}">
+                                                    <div class="slds-truncate" title="{! c.Student_Skill__r.Skill__c}">
+                                                        {! c.Student_Skill__r.Skill__c}
+                                                    </div>
+                                                </td>
+                                                <!--Points-->
+                                                <td scope="row" data-label="{!$ObjectType.Student_Scoring_Skills__c.fields.Points__c.Label}">
+                                                    <div class="slds-truncate" title="{! c.Points__c}">
+                                                        {! c.Points__c}
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </apex:repeat>
+                                    </tbody>
+                                </table>
                            </apex:outputPanel>
                         </apex:pageBlock>
                     </div>

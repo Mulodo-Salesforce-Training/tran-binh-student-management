@@ -6,51 +6,51 @@
              <!--  Component to allow user to upload file from local machine -->
              <center>
               <apex:inputFile value="{!contentFile}" filename="{!nameFile}" /> <apex:commandButton action="{!ReadFile}" value="Upload File" id="theButton" style="width:70px;"/>
-             </center>  
-      
-      <!-- After the user clicks the 'Upload File' button, this section displays the inserted data -->
-      
-      <apex:pageblocktable value="{!uploadedStudents}" var="std" rendered="{!NOT(ISNULL(uploadedStudents))}">
-          <apex:column headerValue="First Name">
+             </center>
+
+        <!-- After the user clicks the 'Upload File' button, this section displays the inserted data -->
+
+        <apex:pageblocktable value="{!uploadedStudents}" var="std" rendered="{!NOT(ISNULL(uploadedStudents))}">
+            <apex:column headerValue="First Name">
               <apex:outputField value="{!std.First_Name__c}"/>
-          </apex:column>
-          <apex:column headerValue="Last Name">
+            </apex:column>
+            <apex:column headerValue="Last Name">
               <apex:outputField value="{!std.Last_Name__c}"/>
-          </apex:column>
-          <apex:column headerValue="Birthday">
+            </apex:column>
+            <apex:column headerValue="Birthday">
               <apex:outputField value="{!std.Birthday__c}"/>
-          </apex:column>
-          <apex:column headerValue="Phone">
+            </apex:column>
+            <apex:column headerValue="Phone">
               <apex:outputField value="{!std.Phone__c}"/>
-          </apex:column>
-          <apex:column headerValue="Email">
+            </apex:column>
+            <apex:column headerValue="Email">
               <apex:outputField value="{!std.Email__c}"/>
-          </apex:column>
-          <apex:column headerValue="Street">
+            </apex:column>
+            <apex:column headerValue="Street">
               <apex:outputField value="{!std.Street__c}"/>
-          </apex:column>
-          <apex:column headerValue="City">
+            </apex:column>
+            <apex:column headerValue="City">
               <apex:outputField value="{!std.City__c}"/>
-          </apex:column>
-          <apex:column headerValue="State Province">
+            </apex:column>
+            <apex:column headerValue="State Province">
               <apex:outputField value="{!std.State_Province__c}"/>
-          </apex:column>
-          <apex:column headerValue="Zip Postal Code">
-              <apex:outputField value="{!std.Zip_Postal_Code__c}"/>
-          </apex:column>
-          <apex:column headerValue="Country">
+            </apex:column>
+            <apex:column headerValue="Zip Postal Code">
+               <apex:outputField value="{!std.Zip_Postal_Code__c}"/>
+            </apex:column>
+            <apex:column headerValue="Country">
               <apex:outputField value="{!std.Country__c}"/>
-          </apex:column>
-          <apex:column headerValue="Skills">
+            </apex:column>
+            <apex:column headerValue="Skills">
               <apex:outputField value="{!std.Skills__c}"/>
-          </apex:column>
-          <apex:column headerValue="Level">
+            </apex:column>
+            <apex:column headerValue="Level">
               <apex:outputField value="{!std.Level__c}"/>
-          </apex:column>
-          <apex:column headerValue="Status">
+            </apex:column>
+            <apex:column headerValue="Status">
               <apex:outputField value="{!std.Status__c}"/>
-          </apex:column>
-      </apex:pageblocktable>
-      </apex:pageBlock>       
-   </apex:form>   
+            </apex:column>
+        </apex:pageblocktable>
+      </apex:pageBlock>
+   </apex:form>
 </apex:page>

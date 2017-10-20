@@ -104,6 +104,14 @@
         <readable>true</readable>
     </fieldPermissions>
     <pageAccesses>
+        <apexPage>SM_GoogleMap</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>SM_InformationStudentPDF</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
         <apexPage>SM_ListStudentPage</apexPage>
         <enabled>false</enabled>
     </pageAccesses>
@@ -121,6 +129,10 @@
     </pageAccesses>
     <pageAccesses>
         <apexPage>SM_RegisterStudentScoringSkill</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>SM_StudentLevelClick</apexPage>
         <enabled>false</enabled>
     </pageAccesses>
     <pageAccesses>

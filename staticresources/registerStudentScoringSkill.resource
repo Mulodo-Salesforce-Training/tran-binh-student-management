@@ -5,8 +5,8 @@ function getRemoteAccount () {
 
     Visualforce.remoting.Manager.invokeAction (
         'SM_RegisterStudentScoringSkill.toRegister',
-            active, 
-            skill, 
+            active,
+            skill,
             points,
         function ( result, event ) {
             if ( event.status ) {
@@ -39,8 +39,8 @@ function getRemoteStudent () {
 
     Visualforce.remoting.Manager.invokeAction (
         'SM_RegisterStudent.toRegister',
-            firstName, 
-            lastName, 
+            firstName,
+            lastName,
             birthday,
             phone,
             email,
@@ -52,7 +52,7 @@ function getRemoteStudent () {
             skills,
             level,
             status,
-        
+
         function ( result, event ) {
             if ( event.status ) {
                 if ( event.result == skill ) {
@@ -66,4 +66,3 @@ function getRemoteStudent () {
         }
     );
 }
-

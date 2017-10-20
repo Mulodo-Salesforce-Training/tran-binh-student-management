@@ -12,16 +12,19 @@
         <name>ApexClass</name>
     </types>
     <types>
+        <members>SM_GoogleMap</members>
+        <members>SM_InformationStudentPDF</members>
         <members>SM_ListStudentPage</members>
         <members>SM_ListStudentScoringSkill</members>
         <members>SM_ListStudentScoringSkills</members>
         <members>SM_RegisterStudent</members>
         <members>SM_RegisterStudentScoringSkill</members>
+        <members>SM_StudentLevelClick</members>
         <members>UploadAccounts</members>
         <name>ApexPage</name>
     </types>
     <types>
-        <members>SM_DoubleStudentSkill</members>
+        <members>SM_DoubleStudentSkills</members>
         <members>SM_TriggerStudentActive</members>
         <members>SM_TriggerStudentStatus</members>
         <members>SM_TriggerUpdatePointsStudent</members>
@@ -61,6 +64,8 @@
         <name>Profile</name>
     </types>
     <types>
+        <members>SM_google_map</members>
+        <members>SM_jquery_min</members>
         <members>angular_min_js</members>
         <members>registerStudentScoringSkill</members>
         <name>StaticResource</name>
