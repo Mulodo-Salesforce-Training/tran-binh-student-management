@@ -1,0 +1,55 @@
+<apex:page tabStyle="Upload_File_CSV__tab" showHeader="true" standardStylesheets="true" sidebar="true" applyHtmlTag="true" applyBodyTag="false" controller="SM_UploadStudentsCC">
+    <apex:form >
+        <apex:sectionHeader title="Upload data from CSV file"/>
+        <apex:pagemessages />
+        <apex:pageBlock >
+            <!-- Component to allow user to upload file from local machine -->
+            <center>
+                <apex:inputFile value="{!contentFile}" filename="{!nameFile}" /> <apex:commandButton action="{!readFile}" value="Upload File" id="theButton" style="width:70px;"/>
+            </center>
+
+            <!-- After the user clicks the 'Upload File' button, this section displays the inserted data -->
+            <apex:pageblocktable value="{!UploadedStudents}" var="std" rendered="{!NOT(ISNULL(UploadedStudents))}">
+                <apex:column headerValue="First Name">
+                    <apex:outputField value="{!std.First_Name__c}"/>
+                </apex:column>
+                <apex:column headerValue="Last Name">
+                    <apex:outputField value="{!std.Last_Name__c}"/>
+                </apex:column>
+                <apex:column headerValue="Birthday">
+                    <apex:outputField value="{!std.Birthday__c}"/>
+                </apex:column>
+                <apex:column headerValue="Phone">
+                    <apex:outputField value="{!std.Phone__c}"/>
+                </apex:column>
+                <apex:column headerValue="Email">
+                    <apex:outputField value="{!std.Email__c}"/>
+                </apex:column>
+                <apex:column headerValue="Street">
+                    <apex:outputField value="{!std.Street__c}"/>
+                </apex:column>
+                <apex:column headerValue="City">
+                    <apex:outputField value="{!std.City__c}"/>
+                </apex:column>
+                <apex:column headerValue="State Province">
+                    <apex:outputField value="{!std.State_Province__c}"/>
+                </apex:column>
+                <apex:column headerValue="Zip Postal Code">
+                    <apex:outputField value="{!std.Zip_Postal_Code__c}"/>
+                </apex:column>
+                <apex:column headerValue="Country">
+                    <apex:outputField value="{!std.Country__c}"/>
+                </apex:column>
+                <apex:column headerValue="Skills">
+                    <apex:outputField value="{!std.Skills__c}"/>
+                </apex:column>
+                <apex:column headerValue="Level">
+                    <apex:outputField value="{!std.Level__c}"/>
+                </apex:column>
+                <apex:column headerValue="Status">
+                    <apex:outputField value="{!std.Status__c}"/>
+                </apex:column>
+            </apex:pageblocktable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

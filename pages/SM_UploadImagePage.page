@@ -1,0 +1,24 @@
+<apex:page standardController="Student__c" tabStyle="Image_Upload__tab" extensions="SM_UploadImageCX" showHeader="false" standardStyleSheets="true" sidebar="false">
+
+<apex:form id="contentForm">
+<div style="height:170px;">
+    <apex:pageBlock mode="maindetail">
+        <apex:pageblocksection columns="1" rendered="{!displaying}">
+            <apex:image height="150" value="{!URLFOR($Action.Attachment.Download, currentPicture)}" rendered="{!currentPicture != null}"/>
+            <apex:outputPanel rendered="{!currentPicture == null}"><em>No picture currently available</em></apex:outputPanel>
+        </apex:pageblocksection>
+        
+        <apex:pageblocksection columns="1" rendered="{! !displaying}">
+            <p>Use the button to below to select a new file and then press "Save"</p>
+            <apex:inputFile value="{!profilePicFile}" />
+            <p>Or press Cancel to return.</p>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</div>
+    <apex:commandButton value="Upload new photo" action="{!toggle}" rerender="contentForm" rendered="{!displaying && currentPicture!=null}"/>
+    <apex:commandButton value="Upload photo" action="{!toggle}" rerender="contentForm" rendered="{!displaying && currentPicture==null}"/>
+    <apex:commandButton value="Cancel" action="{!toggle}" rendered="{! !displaying}"/>
+    <apex:commandButton value="Save" action="{!saveFile}" rendered="{! !displaying}"/>
+</apex:form>
+  
+</apex:page>

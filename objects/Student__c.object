@@ -300,6 +300,58 @@
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>Location_Google_Map__c</fullName>
+        <externalId>false</externalId>
+        <formula>SUBSTITUTE( 
+SUBSTITUTE( 
+SUBSTITUTE( 
+SUBSTITUTE(Street__c, &quot;(&quot;, &quot;&quot;), &quot;)&quot;, &quot;&quot;), &quot; &quot;, &quot;&quot;), &quot;+&quot;, &quot;&quot;)+&quot;,&quot;+
+SUBSTITUTE( 
+SUBSTITUTE( 
+SUBSTITUTE( 
+SUBSTITUTE(City__c, &quot;(&quot;, &quot;&quot;), &quot;)&quot;, &quot;&quot;), &quot; &quot;, &quot;&quot;), &quot;+&quot;, &quot;&quot;)+&quot;,&quot;+
+SUBSTITUTE( 
+SUBSTITUTE( 
+SUBSTITUTE( 
+SUBSTITUTE(State_Province__c, &quot;(&quot;, &quot;&quot;), &quot;)&quot;, &quot;&quot;), &quot; &quot;, &quot;&quot;), &quot;+&quot;, &quot;&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Location Google Map</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Map_Location__c</fullName>
+        <displayLocationInDecimal>false</displayLocationInDecimal>
+        <externalId>false</externalId>
+        <label>Map Location</label>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Location</type>
+    </fields>
+    <fields>
+        <fullName>Map__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(OR(
+         ISBLANK(Map_Location__Latitude__s),
+         ISBLANK(Map_Location__Longitude__s)
+      ) , &apos;Map preview is not available now&apos;,
+IMAGE(&quot;https://maps.googleapis.com/maps/api/staticmap?center=&quot; + Location_Google_Map__c + &quot;&amp;zoom=13&amp;size=600x300&amp;&quot;+ Location_Google_Map__c  + &quot;&amp;key=AIzaSyAk4lh1e88wZ542EMBnQWYmAbdan2vtfQM&quot;,&apos;No Map Preview Available&apos;,
+  300, 600
+))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Map</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Phone__c</fullName>
         <description>Phone</description>
         <externalId>false</externalId>

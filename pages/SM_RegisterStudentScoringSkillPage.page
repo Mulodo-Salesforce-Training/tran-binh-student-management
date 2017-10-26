@@ -1,10 +1,10 @@
-<apex:page docType="html-5.0" tabStyle="Register_Student_Skill__tab" standardController="Student__c" extensions="SM_RegisterStudent">
+<apex:page docType="html-5.0" tabStyle="Register_Student_Skill__tab" standardController="Student_Scoring_Skill__c" extensions="SM_RegisterStudentScoringSkillCX">
     <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
 
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="x-ua-compatible" content="ie=edge" />
-            <title>Student New</title>
+            <title>Student Scoring Skill New</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <apex:slds />
         <apex:includeScript value="{!URLFOR($Resource.SM_RegisterStudentScoringSkill)}"/>
@@ -14,35 +14,43 @@
     <body ng-app="demoApp" class="slds-container" ng-controller="myCtrl">
         <!-- REQUIRED SLDS WRAPPER -->
         <div class="slds-scope">
-            <div class="slds-align_absolute-center slds-text-heading_large" style="color: #5ADBFF;">Student New</div>
+            <div class="slds-align_absolute-center slds-text-heading_large" style="color: #5ADBFF;">Student Scoring Skill New</div>
             <div id="responseResult"></div>
             <div class="slds-form slds-form_stacked" title="Information">
-                <apex:pageblock title="Information">          
+                <apex:pageblock title="Information">
                     <div class="slds-grid">
-                       <div class="slds-col slds-size--3-of-6"><label class="slds-form-element__label">First Name </label>
+                       <div class="slds-col slds-size--3-of-6"><label class="slds-form-element__label">Active </label>
+                       </div>
+                    </div>
+                    <div class="slds-grid" >
+                        <input type="checkbox" name="active" id="active" checked="true"/>
+                    </div>
+                    
+                    <div class="slds-grid">
+                       <div class="slds-col slds-size--3-of-6"><label class="slds-form-element__label">Skill </label>
                        </div>
                     </div>
                     <div class="slds-grid">
-                        <div class="slds-col slds-size--3-of-4"><input type="text" class="slds-input" id="firstName" name="firstName" /></div>
+                        <form class="slds-form">
+                            <select id='skill'>
+                                <option>-------------None-------------</option>
+                                <option ng-repeat="option in skillPickList" id="skill" name='skill'>
+                                    {{option.label}}
+                                </option>
+                            </select>
+                        </form>
                     </div>
                     <div class="slds-grid">
-                       <div class="slds-col slds-size--3-of-6"><label class="slds-form-element__label">Last Name </label>
+                       <div class="slds-col slds-size--3-of-6"><label class="slds-form-element__label">Points </label>
                        </div>
                     </div>
                     <div class="slds-grid">
-                        <div class="slds-col slds-size--3-of-4"><input type="text" class="slds-input" id="lastName" name="lastName" /></div>
-                    </div>
-                    <div class="slds-grid">
-                       <div class="slds-col slds-size--3-of-6"><label class="slds-form-element__label">Birthday </label>
-                       </div>
-                    </div>
-                    <div class="slds-grid">
-                        <div class="slds-col slds-size--3-of-4"><input type="date" class="slds-input" id="birthday" name="birthday" /></div>
+                        <div class="slds-col slds-size--3-of-4"><input type="number" class="slds-input" id="points" name="points" /></div>
                     </div>
                 </apex:pageblock>
                 
                 <div class="slds-form-element">
-                    <button class="slds-button slds-button_neutral" onclick="{!URLFOR($Page.SM_ListStudentPage)}">Cancel</button>
+                    <button class="slds-button slds-button_neutral" onclick="{!URLFOR($Page.SM_ListStudentsPage)}">Cancel</button>
                     <button class="slds-button slds-button_neutral" onclick="getRemoteAccount();">Save</button>
                 </div>
             </div>
@@ -51,6 +59,7 @@
                 angular.module("demoApp", [])
                     .controller("myCtrl", ($scope) => {
                         $scope.students = {!JSONstudents};
+                        $scope.skillPickList = {!SkillPickList};
                     })
             </script>
     	</body>

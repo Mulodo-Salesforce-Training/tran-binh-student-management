@@ -1,0 +1,161 @@
+<apex:page tabStyle="List_Student_Skill__tab" showHeader="true" standardStylesheets="true" sidebar="true" applyHtmlTag="true" applyBodyTag="false" controller="SM_ListStudentScoringSkillCC">
+    <!--ADD XMLNS TO USE SVG FROM VISUALFORCE-->
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
+        <head>
+            <meta charset="utf-8"/>
+            <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+            <title>Salesforce Lightning Design System Trailhead Module</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1"/>
+            <apex:slds />
+        </head>
+
+        <body>
+            <apex:pageBlock >
+                <apex:form >
+                    <apex:inputText styleClass="slds-input" style="width:50px;" value="{!customListSize}"/>
+                    <label>Records/Page </label>
+                    <apex:commandButton styleClass="slds-button slds-button_neutral" reRender="StudentTable, PaginationButton" value="Change size"/>
+                    <apex:outputLink value="{!URLFOR($Action.Student_Scoring_Skill__c.New)}" styleClass="slds-button slds-button_neutral">
+                        New
+                    </apex:outputLink>
+                </apex:form>
+            </apex:pageBlock>
+                <!--Wrap all div in this to apply stylesheet from slds-->
+                <apex:form >
+                    <div class="slds-scope" >
+                        <div class="slds-page-header">
+                            <div class="slds-media">
+                                <div class="slds-media__body">
+                                    <h1 class="slds-page-header__title slds-truncate slds-align-middle"
+                                        title="Students Custom List">
+                                        List Students Scoring Skill
+                                    </h1>
+                                </div>
+                            </div>
+                        </div>
+
+                        <apex:pageBlock id="student_list_table">
+                            <apex:outputPanel id="StudentTable">
+                            <!--LIST STUDENT TABLE-->
+                                <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                                    <thead>
+                                        <tr class="slds-text-title_caps">
+                                        <th scope="col">
+                                            <div class="slds-truncate">
+                                                &nbsp;
+                                            </div>
+                                        </th>
+                                        <!--Active-->
+                                        <th scope="col">
+                                            <div class="slds-truncate" title="{!$ObjectType.Student_Scoring_Skill__c.fields.Name.Label}">
+                                                {!$ObjectType.Student_Scoring_Skill__c.fields.Name.Label}
+                                            </div>
+                                        </th>
+                                        <!--Active-->
+                                        <th scope="col">
+                                            <div class="slds-truncate" title="{!$ObjectType.Student_Scoring_Skill__c.fields.Active__c.Label}">
+                                                {!$ObjectType.Student_Scoring_Skill__c.fields.Active__c.Label}
+                                            </div>
+                                        </th>
+                                        <!--Skill-->
+                                        <th scope="col">
+                                            <div class="slds-truncate" title="{!$ObjectType.Student_Scoring_Skill__c.fields.Skill__c.Label}">
+                                                {!$ObjectType.Student_Scoring_Skill__c.fields.Skill__c.Label}
+                                            </div>
+                                        </th>
+                                        <!--Points-->
+                                        <th scope="col">
+                                            <div class="slds-truncate" title="{!$ObjectType.Student_Scoring_Skill__c.fields.Points__c.Label}">
+                                                {!$ObjectType.Student_Scoring_Skill__c.fields.Points__c.Label}
+                                            </div>
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <!--USE TO CREATE AN INDEX COLUMN-->
+                                    <apex:variable var="index" value="{!0}"/>
+                                        <!--LOOP THROUGH RECORDSETVARS-->
+                                        <apex:repeat var="c" value="{! students}">
+                                            <!--AUTO INCREMENT index-->
+                                            <apex:variable var="index" value="{!index + 1}"/>
+                                            <tr>
+                                                <th scope="col" data-label="Index">
+                                                    {!index}
+                                                </th>
+                                                <td data-label="{!$ObjectType.Student_Scoring_Skill__c.fields.Name.Label}">
+                                                    <apex:commandLink action="{!URLFOR($Action.Student_Scoring_Skill__c.View, c.Id)}" value="{!c.Name}"/>
+                                                </td>
+                                                <!--Active-->
+                                                <td data-label="{!$ObjectType.Student_Scoring_Skill__c.fields.Active__c.Label}">
+                                                    <div class="slds-truncate" title="{! c.Active__c}">
+                                                        {! c.Active__c}
+                                                    </div>
+                                                </td>
+
+                                                <!--Skill-->
+                                                <td scope="row" data-label="{!$ObjectType.Student_Scoring_Skill__c.fields.Skill__c.Label}">
+                                                    <div class="slds-truncate" title="{! c.Skill__c}">
+                                                        {! c.Skill__c}
+                                                    </div>
+                                                </td>
+                                                <!--Points-->
+                                                <td scope="row" data-label="{!$ObjectType.Student_Scoring_Skill__c.fields.Points__c.Label}">
+                                                    <div class="slds-truncate" title="{! c.Points__c}">
+                                                        {! c.Points__c}
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </apex:repeat>
+                                    </tbody>
+                                </table>
+                            </apex:outputPanel>
+                        </apex:pageBlock>
+                    </div>
+                </apex:form>
+            <div style="height: 10px"></div>
+            <!-- PAGINATION START -->
+            <div class="slds-clearfix">
+                <apex:pageBlock >
+                    <apex:pageBlockButtons location="bottom">
+                        <apex:outputPanel id="PaginationButton">
+                            <apex:form >
+                                <apex:variable var="total" value="{!TotalRecord}">
+                                    <button class="slds-button slds-button_neutral">Total record: {!total}</button>
+                                </apex:variable>
+                                <apex:commandButton action="{!selectAction}" title="First" value="First" disabled="{!disablePrevious}" reRender="StudentTable, PaginationButton" styleClass="slds-button slds-button_neutral">
+                                    <apex:param name="paramValue" value="First"></apex:param>
+                                </apex:commandButton>
+                                <apex:commandButton action="{!selectAction}" title="Previous" value="Prev" disabled="{!disablePrevious}" reRender="StudentTable, PaginationButton" styleClass="slds-button slds-button_neutral">
+                                	<apex:param name="paramValue" value="Previous"></apex:param>
+                                </apex:commandButton>
+                                <apex:variable var="current" value="{!CurrentPage}">
+                                    <button class="slds-button slds-button_neutral">{!current}</button>
+                                </apex:variable>
+                                <apex:commandButton action="{!selectAction}" title="Next" value="Next" disabled="{!disableNext}" reRender="StudentTable, PaginationButton" styleClass="slds-button slds-button_neutral">
+                                     <apex:param name="paramValue" value="Next"></apex:param>
+                                </apex:commandButton>
+                                <apex:commandButton action="{!selectAction}" title="End" value="End" disabled="{!disableNext}" reRender="StudentTable, PaginationButton" styleClass="slds-button slds-button_neutral">
+                                    <apex:param name="paramValue" value="End"></apex:param>
+                                </apex:commandButton>
+                                <apex:variable var="total" value="{!TotalPage}">
+                                    <button class="slds-button slds-button_neutral">Total page: {!total}</button>
+                                </apex:variable>
+                            </apex:form>
+                        </apex:outputPanel>
+                    </apex:pageBlockButtons>
+                </apex:pageBlock>
+                <!-- PAGINATION END-->
+
+                <!-- FOOTER -->
+                <div>
+                    <footer role="contentinfo" class="slds-p-around--large">
+                        <div class="slds-grid slds-grid--align-spread">
+                            <p class="slds-col">Salesforce Lightning Design System Example</p>
+                            <p class="slds-col">&copy; Mulodo</p>
+                        </div>
+                    </footer>
+                </div>
+              </div>
+         </body>
+    </html>
+</apex:page>

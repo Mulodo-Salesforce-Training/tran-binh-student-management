@@ -8,6 +8,16 @@ trigger SM_TriggerStudentStatus on Student__c ( after insert, after update ) {
     List<Student_Scoring_Skills__c> statusPoints    = new List<Student_Scoring_Skills__c>();
 
     if ( Trigger.isAfter ) {
+         if ( !system.isBatch() && !system.isFuture() ) {
+            SM_UpdatePointsStudentBatch executeBatchUpdatePoints = new SM_UpdatePointsStudentBatch();
+            if( trigger.isAfter ) {
+                if( trigger.isInsert ) {
+                    Database.executeBatch(executeBatchUpdatePoints);
+                } else if( trigger.isUpdate ) {
+                    Database.executeBatch(executeBatchUpdatePoints);
+                }
+            }
+		}
         //add in list with status of student
         for ( Student__c std: Trigger.new )
         {

@@ -72,7 +72,7 @@
     <fields>
         <fullName>Student_ID__c</fullName>
         <externalId>false</externalId>
-        <label>Student ID</label>
+        <label>Student Name</label>
         <referenceTo>Student__c</referenceTo>
         <relationshipLabel>Student Scoring Skills</relationshipLabel>
         <relationshipName>Student_Scoring_Skills</relationshipName>

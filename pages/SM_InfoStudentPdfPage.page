@@ -1,0 +1,273 @@
+<apex:page standardController="Student__c" renderAs="pdf" applyBodyTag="false" extensions="SM_UploadImageCX">
+<head>
+</head>
+
+<body>
+    <div class="slds-form slds-form_stacked">
+        <apex:pageblock title="Student Information">
+            <apex:form >
+                <div class="slds-truncate">
+                    &nbsp;
+                </div>
+                <div class="slds-page-header">
+                    <div class="slds-media">
+                        <div class="slds-media__body">
+                            <h1 class="slds-page-header__title slds-truncate slds-align-middle"
+                                title="Students Custom List">
+                                Basic Information
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+                <apex:pageBlock id="student_list_table">
+                    <apex:outputPanel id="StudentTable">
+                        <!--List Students-->
+                        <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                            <thead>
+                                <tr class="slds-text-title_caps">
+                                    <th scope="col">
+                                        <div class="slds-truncate">
+                                            &nbsp;
+                                        </div>
+                                    </th>
+                                    <!--First name-->
+                                    <th scope="col">
+                                        <div class="slds-truncate" title="{!$ObjectType.Student__c.fields.First_Name__c.Label}">
+                                            {!$ObjectType.Student__c.fields.First_Name__c.Label}
+                                        </div>
+                                    </th>
+                                    <!--Last Name-->
+                                    <th scope="col">
+                                        <div class="slds-truncate" title="{!$ObjectType.Student__c.fields.Last_Name__c.Label}">
+                                            {!$ObjectType.Student__c.fields.Last_Name__c.Label}
+                                        </div>
+                                    </th>
+                                    <!--Birthday-->
+                                    <th scope="col">
+                                        <div class="slds-truncate" title="{!$ObjectType.Student__c.fields.Birthday__c.Label}">
+                                            {!$ObjectType.Student__c.fields.Birthday__c.Label}
+                                        </div>
+                                    </th>
+                                    <!--Phone-->
+                                    <th scope="col">
+                                        <div class="slds-truncate" title="{!$ObjectType.Student__c.fields.Phone__c.Label}">
+                                            {!$ObjectType.Student__c.fields.Phone__c.Label}
+                                        </div>
+                                    </th>
+                                    <!--Email-->
+                                    <th scope="col">
+                                        <div class="slds-truncate" title="{!$ObjectType.Student__c.fields.Email__c.Label}">
+                                            {!$ObjectType.Student__c.fields.Email__c.Label}
+                                        </div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="col">
+                                        <div class="slds-truncate">
+                                            &nbsp;
+                                        </div>
+                                    </th>
+                                    <!--First Name-->
+                                    <td scope="row" data-label="{!$ObjectType.Student__c.fields.First_Name__c.Label}">
+                                        <div class="slds-truncate" title="{! Student__c.First_Name__c}">
+                                            {!Student__c.First_Name__c}
+                                        </div>
+                                    </td>
+                                    <!--Last Name-->
+                                    <td scope="row" data-label="{!$ObjectType.Student__c.fields.Last_Name__c.Label}">
+                                        <div class="slds-truncate" title="{! Student__c.Last_Name__c}">
+                                            {!Student__c.Last_Name__c}
+                                        </div>
+                                    </td>
+                                    <!--State Province-->
+                                    <td scope="row" data-label="{!$ObjectType.Student__c.fields.Birthday__c.Label}">
+                                        <div class="slds-truncate" title="{! Student__c.Birthday__c}">
+                                            {!Student__c.Birthday__c}
+                                        </div>
+                                    </td>
+                                    <!--Phone-->
+                                    <td scope="row" data-label="{!$ObjectType.Student__c.fields.Phone__c.Label}">
+                                        <div class="slds-truncate" title="{! Student__c.Phone__c}">
+                                            {!Student__c.Phone__c}
+                                        </div>
+                                    </td>
+                                    <!--Email-->
+                                    <td scope="row" data-label="{!$ObjectType.Student__c.fields.Email__c.Label}">
+                                        <div class="slds-truncate" title="{! Student__c.Email__c}">
+                                            {!Student__c.Email__c}
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </apex:outputPanel>
+                </apex:pageBlock>
+            </apex:form>
+            <apex:form >
+                <div class="slds-page-header">
+                    <div class="slds-media">
+                        <div class="slds-media__body">
+                            <h1 class="slds-page-header__title slds-truncate slds-align-middle"
+                                title="Students Custom List">
+                                Training Information
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+                <apex:pageBlock id="student_list_table">
+                    <apex:outputPanel id="StudentTable">
+                        <!--List Students-->
+                        <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                            <thead>
+                                <tr class="slds-text-title_caps">
+                                    <th scope="col">
+                                        <div class="slds-truncate">
+                                            &nbsp;
+                                        </div>
+                                    </th>
+                                    <!--Skills-->
+                                    <th scope="col">
+                                        <div class="slds-truncate" title="{!$ObjectType.Student__c.fields.Skills__c.Label}">
+                                            {!$ObjectType.Student__c.fields.Skills__c.Label}
+                                        </div>
+                                    </th>
+                                    <!--Level-->
+                                    <th scope="col">
+                                        <div class="slds-truncate" title="{!$ObjectType.Student__c.fields.Level__c.Label}">
+                                            {!$ObjectType.Student__c.fields.Level__c.Label}
+                                        </div>
+                                    </th>
+                                    <!--Scores-->
+                                    <th scope="col">
+                                        <div class="slds-truncate" title="{!$ObjectType.Student__c.fields.Scores__c.Label}">
+                                            {!$ObjectType.Student__c.fields.Scores__c.Label}
+                                        </div>
+                                    </th>
+                                     <!--Status-->
+                                    <th scope="col">
+                                        <div class="slds-truncate" title="{!$ObjectType.Student__c.fields.Status__c.Label}">
+                                            {!$ObjectType.Student__c.fields.Status__c.Label}
+                                        </div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="col">
+                                        <div class="slds-truncate">
+                                            &nbsp;
+                                        </div>
+                                    </th>
+                                    <!--Skills-->
+                                    <td scope="row" data-label="{!$ObjectType.Student__c.fields.Skills__c.Label}">
+                                        <div class="slds-truncate" title="{! Student__c.Skills__c}">
+                                            {!Student__c.Skills__c}
+                                        </div>
+                                    </td>
+                                    <!--Level-->
+                                    <td scope="row" data-label="{!$ObjectType.Student__c.fields.Level__c.Label}">
+                                        <div class="slds-truncate" title="{! Student__c.Level__c}">
+                                            {!Student__c.Level__c}
+                                        </div>
+                                    </td>
+                                    <!--Scores-->
+                                    <td scope="row" data-label="{!$ObjectType.Student__c.fields.Scores__c.Label}">
+                                        <div class="slds-truncate" title="{! Student__c.Scores__c}">
+                                            {!Student__c.Scores__c}
+                                        </div>
+                                    </td>
+                                    <!--Status-->
+                                    <td scope="row" data-label="{!$ObjectType.Student__c.fields.Status__c.Label}">
+                                        <div class="slds-truncate" title="{! Student__c.Status__c}">
+                                            {!Student__c.Status__c}
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </apex:outputPanel>
+                </apex:pageBlock>
+            </apex:form>
+            <apex:form >
+                <div class="slds-page-header">
+                    <div class="slds-media">
+                        <div class="slds-media__body">
+                            <h1 class="slds-page-header__title slds-truncate slds-align-middle"
+                                title="Students Custom List">
+                                Address Information
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+                <apex:pageBlock id="student_list_table">
+                    <apex:outputPanel id="StudentTable">
+                        <!--List Students-->
+                        <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                            <thead>
+                                <tr class="slds-text-title_caps">
+                                    <th scope="col">
+                                        <div class="slds-truncate">
+                                            &nbsp;
+                                        </div>
+                                    </th>
+                                    <!--Last name-->
+                                    <th scope="col">
+                                        <div class="slds-truncate" title="{!$ObjectType.Student__c.fields.Street__c.Label}">
+                                            {!$ObjectType.Student__c.fields.Street__c.Label}
+                                        </div>
+                                    </th>
+                                    <!--Birthday-->
+                                    <th scope="col">
+                                        <div class="slds-truncate" title="{!$ObjectType.Student__c.fields.City__c.Label}">
+                                            {!$ObjectType.Student__c.fields.City__c.Label}
+                                        </div>
+                                    </th>
+                                    <!--State Province-->
+                                    <th scope="col">
+                                        <div class="slds-truncate" title="{!$ObjectType.Student__c.fields.State_Province__c.Label}">
+                                            {!$ObjectType.Student__c.fields.State_Province__c.Label}
+                                        </div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="col">
+                                        <div class="slds-truncate">
+                                            &nbsp;
+                                        </div>
+                                    </th>
+                                    <!--Street-->
+                                    <td scope="row" data-label="{!$ObjectType.Student__c.fields.Street__c.Label}">
+                                        <div class="slds-truncate" title="{! Student__c.Street__c}">
+                                            {!Student__c.Street__c}
+                                        </div>
+                                    </td>
+                                    <!--City-->
+                                    <td scope="row" data-label="{!$ObjectType.Student__c.fields.City__c.Label}">
+                                        <div class="slds-truncate" title="{! Student__c.City__c}">
+                                            {!Student__c.City__c}
+                                        </div>
+                                    </td>
+                                    <!--State Province-->
+                                    <td scope="row" data-label="{!$ObjectType.Student__c.fields.State_Province__c.Label}">
+                                        <div class="slds-truncate" title="{! Student__c.State_Province__c}">
+                                            {!Student__c.State_Province__c}
+                                        </div>
+                                    </td>
+                                     <!--Map-->
+                                    <div style="width: 100%">
+                                        <apex:outputText value="{!Student__c.Map__c}" escape="false"/>
+                                    </div>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </apex:outputPanel>
+                </apex:pageBlock>
+            </apex:form>
+        </apex:pageblock>
+    </div>
+</body>
+</apex:page>

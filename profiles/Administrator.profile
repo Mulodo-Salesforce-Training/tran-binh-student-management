@@ -1,27 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Profile xmlns="http://soap.sforce.com/2006/04/metadata">
     <classAccesses>
-        <apexClass>BatchUpdatePointsStudent</apexClass>
+        <apexClass>SM_LevelStudentBatch</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>FileUploader</apexClass>
+        <apexClass>SM_ListStudentCC</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>SM_ChangeStatusStudent</apexClass>
+        <apexClass>SM_ListStudentPageTest</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>SM_ListStudentPage</apexClass>
+        <apexClass>SM_ListStudentScoringSkillCC</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>SM_ListStudentScoringSkill</apexClass>
+        <apexClass>SM_ListStudentScoringSkillCCTest</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>SM_ListStudentScoringSkills</apexClass>
+        <apexClass>SM_ListStudentScoringSkillsCC</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>SM_ListStudentScoringSkillsCCTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>SM_ListStudentsCC</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>SM_ListStudentsCCTest</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -29,7 +41,35 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>SM_RegisterStudentScoringSkill</apexClass>
+        <apexClass>SM_RegisterStudentScoringSkillCX</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>SM_RegisterStudentTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>SM_TriggerDoubleSkillTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>SM_TriggerDoubleStudentSkillsTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>SM_UpdatePointsStudentBatch</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>SM_UpdatePointsStudentBatchTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>SM_UploadImageCX</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>SM_UploadStudentsCC</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <custom>true</custom>
@@ -75,6 +115,21 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Student__c.Location_Google_Map__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Student__c.Map_Location__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Student__c.Map__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Student__c.Scores__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -104,11 +159,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <pageAccesses>
-        <apexPage>SM_GoogleMap</apexPage>
+        <apexPage>SM_InfoGoogleMapPage</apexPage>
         <enabled>false</enabled>
     </pageAccesses>
     <pageAccesses>
-        <apexPage>SM_InformationStudentPDF</apexPage>
+        <apexPage>SM_InfoStudentPdfPage</apexPage>
         <enabled>false</enabled>
     </pageAccesses>
     <pageAccesses>
@@ -116,11 +171,15 @@
         <enabled>false</enabled>
     </pageAccesses>
     <pageAccesses>
-        <apexPage>SM_ListStudentScoringSkill</apexPage>
+        <apexPage>SM_ListStudentScoringSkillPage</apexPage>
         <enabled>false</enabled>
     </pageAccesses>
     <pageAccesses>
-        <apexPage>SM_ListStudentScoringSkills</apexPage>
+        <apexPage>SM_ListStudentScoringSkillsPage</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>SM_ListStudentsPage</apexPage>
         <enabled>false</enabled>
     </pageAccesses>
     <pageAccesses>
@@ -128,15 +187,19 @@
         <enabled>false</enabled>
     </pageAccesses>
     <pageAccesses>
-        <apexPage>SM_RegisterStudentScoringSkill</apexPage>
+        <apexPage>SM_RegisterStudentScoringSkillPage</apexPage>
         <enabled>false</enabled>
     </pageAccesses>
     <pageAccesses>
-        <apexPage>SM_StudentLevelClick</apexPage>
+        <apexPage>SM_StudentLevelPage</apexPage>
         <enabled>false</enabled>
     </pageAccesses>
     <pageAccesses>
-        <apexPage>UploadAccounts</apexPage>
+        <apexPage>SM_UploadImagePage</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>SM_UploadStudentsPage</apexPage>
         <enabled>false</enabled>
     </pageAccesses>
     <recordTypeVisibilities>
@@ -167,19 +230,39 @@
         <visible>true</visible>
     </recordTypeVisibilities>
     <tabVisibilities>
-        <tab>List_Student_Scoring_Skill</tab>
+        <tab>Google_Map</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>List_Student_Scoring_Skills</tab>
+        <tab>Image_Upload</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>Register_Student_Scoring_Skill</tab>
+        <tab>List_Student</tab>
+        <visibility>DefaultOff</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>List_Student_Skill</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>SM_Student_List</tab>
+        <tab>List_Student_Skills</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>List_Students</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>PDF_Info</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>Register_Student_Skill</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>Student_Level</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
@@ -191,8 +274,8 @@
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>Upload_file</tab>
-        <visibility>DefaultOff</visibility>
+        <tab>Upload_File_CSV</tab>
+        <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <userLicense>Salesforce</userLicense>
     <userPermissions>

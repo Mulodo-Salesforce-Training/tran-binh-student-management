@@ -1,33 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
-        <members>BatchUpdatePointsStudent</members>
-        <members>FileUploader</members>
-        <members>SM_ChangeStatusStudent</members>
-        <members>SM_ListStudentPage</members>
-        <members>SM_ListStudentScoringSkill</members>
-        <members>SM_ListStudentScoringSkills</members>
+        <members>SM_LevelStudentBatch</members>
+        <members>SM_ListStudentCC</members>
+        <members>SM_ListStudentPageTest</members>
+        <members>SM_ListStudentScoringSkillCC</members>
+        <members>SM_ListStudentScoringSkillCCTest</members>
+        <members>SM_ListStudentScoringSkillsCC</members>
+        <members>SM_ListStudentScoringSkillsCCTest</members>
+        <members>SM_ListStudentsCC</members>
+        <members>SM_ListStudentsCCTest</members>
         <members>SM_RegisterStudent</members>
-        <members>SM_RegisterStudentScoringSkill</members>
+        <members>SM_RegisterStudentScoringSkillCX</members>
+        <members>SM_RegisterStudentTest</members>
+        <members>SM_TriggerDoubleSkillTest</members>
+        <members>SM_TriggerDoubleStudentSkillsTest</members>
+        <members>SM_UpdatePointsStudentBatch</members>
+        <members>SM_UpdatePointsStudentBatchTest</members>
+        <members>SM_UploadImageCX</members>
+        <members>SM_UploadStudentsCC</members>
         <name>ApexClass</name>
     </types>
     <types>
-        <members>SM_GoogleMap</members>
-        <members>SM_InformationStudentPDF</members>
+        <members>SM_InfoGoogleMapPage</members>
+        <members>SM_InfoStudentPdfPage</members>
         <members>SM_ListStudentPage</members>
-        <members>SM_ListStudentScoringSkill</members>
-        <members>SM_ListStudentScoringSkills</members>
+        <members>SM_ListStudentScoringSkillPage</members>
+        <members>SM_ListStudentScoringSkillsPage</members>
+        <members>SM_ListStudentsPage</members>
         <members>SM_RegisterStudent</members>
-        <members>SM_RegisterStudentScoringSkill</members>
-        <members>SM_StudentLevelClick</members>
-        <members>UploadAccounts</members>
+        <members>SM_RegisterStudentScoringSkillPage</members>
+        <members>SM_StudentLevelPage</members>
+        <members>SM_UploadImagePage</members>
+        <members>SM_UploadStudentsPage</members>
         <name>ApexPage</name>
     </types>
     <types>
-        <members>SM_DoubleStudentSkills</members>
+        <members>SM_TriggerDoubleSkill</members>
+        <members>SM_TriggerDoubleStudentSkills</members>
         <members>SM_TriggerStudentActive</members>
         <members>SM_TriggerStudentStatus</members>
-        <members>SM_TriggerUpdatePointsStudent</members>
         <members>SM_TriggerUpdateStudentPoints</members>
         <name>ApexTrigger</name>
     </types>
@@ -38,13 +50,18 @@
         <name>CustomObject</name>
     </types>
     <types>
-        <members>List_Student_Scoring_Skill</members>
-        <members>List_Student_Scoring_Skills</members>
-        <members>Register_Student_Scoring_Skill</members>
-        <members>SM_Student_List</members>
+        <members>Google_Map</members>
+        <members>Image_Upload</members>
+        <members>List_Student</members>
+        <members>List_Student_Skill</members>
+        <members>List_Student_Skills</members>
+        <members>List_Students</members>
+        <members>PDF_Info</members>
+        <members>Register_Student_Skill</members>
+        <members>Student_Level</members>
         <members>Student_Scoring_Skill__c</members>
         <members>Student_Scoring_Skills__c</members>
-        <members>Upload_file</members>
+        <members>Upload_File_CSV</members>
         <name>CustomTab</name>
     </types>
     <types>
@@ -64,10 +81,10 @@
         <name>Profile</name>
     </types>
     <types>
+        <members>SM_RegisterStudentScoringSkill</members>
+        <members>SM_angular_min_js</members>
         <members>SM_google_map</members>
         <members>SM_jquery_min</members>
-        <members>angular_min_js</members>
-        <members>registerStudentScoringSkill</members>
         <name>StaticResource</name>
     </types>
     <version>36.0</version>

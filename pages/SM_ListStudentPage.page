@@ -1,4 +1,4 @@
-<apex:page tabStyle="List_Student__tab" showHeader="true" standardStylesheets="true" sidebar="true" applyHtmlTag="true" applyBodyTag="false" controller="SM_ListStudentPage">
+<apex:page tabStyle="List_Student__tab" showHeader="true" standardStylesheets="true" sidebar="true" applyHtmlTag="true" applyBodyTag="false" controller="SM_ListStudentCC">
     <!--ADD XMLNS TO USE SVG FROM VISUALFORCE-->
     <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
         <head>
@@ -9,7 +9,7 @@
 
             <!-- Import the Design System style sheet -->
             <apex:slds />
-            <apex:includeScript value="{!URLFOR($Resource.angular_min_js)}"/>
+            <apex:includeScript value="{!URLFOR($Resource.SM_angular_min_js)}"/>
         </head>
 
         <body ng-app="mainApp">
@@ -100,6 +100,11 @@
                                             </div>
                                         </th>
                                         <th scope="col">
+                                            <div class="slds-truncate" title="Upload Image">
+                                               Upload Image
+                                            </div>
+                                        </th>
+                                        <th scope="col">
                                             <div class="slds-truncate" title="Google Map">
                                                Google Map
                                             </div>
@@ -107,11 +112,11 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <!--USE TO CREATE AN INDEX COLUMN-->
+                                    <!--Index column-->
                                     <apex:variable var="index" value="{!0}"/>
-                                    <!--LOOP THROUGH RECORDSETVARS-->
+                                    <!--Loop record-->
                                         <apex:repeat var="c" value="{! students }">
-                                            <!--AUTO INCREMENT index-->
+                                            <!--Auto increment index-->
                                             <apex:variable var="index" value="{!index + 1}"/>
                                             <tr>
                                                 <th scope="col" data-label="Index">
@@ -120,13 +125,13 @@
                                                 <th>
                                                     <input type="checkbox" name="options" ng-attr-checked="{{selectedList.has(student.Id)}}" ng-click="onSelectStudent(student.Id)"/>
                                                 </th>
-                                                <!--NAME-->
+                                                <!--Name-->
                                                 <td scope="col" data-label="{!$ObjectType.Student__c.fields.Name.Label}">
                                                     <div class="slds-truncate" title="{! c.Name}">
                                                         <apex:commandLink action="{!URLFOR($Action.Student__c.View, c.Id)}" value="{!c.Name}"/>
                                                     </div>
                                                 </td>
-                                                 <!--LAST Name-->
+                                                 <!--Last Name-->
                                                 <td scope="row" data-label="{!$ObjectType.Student__c.fields.Country__c.Label}">
                                                     <div class="slds-truncate" title="{! c.Last_Name__c}">
                                                         {! c.Last_Name__c}
@@ -144,34 +149,40 @@
                                                         {! c.Country__c}
                                                     </div>
                                                 </td>
-                                                <!--CITY-->
+                                                <!--Phone-->
                                                 <td scope="row" data-label="{!$ObjectType.Student__c.fields.Phone__c.Label}">
                                                     <div class="slds-truncate" title="{! c.Phone__c}">
                                                         {! c.Phone__c}
                                                     </div>
                                                 </td>
-                                                <!--STATE/PROVINCE-->
+                                                <!--Email-->
                                                 <td scope="row" data-label="{!$ObjectType.Student__c.fields.Email__c.Label}">
                                                     <div class="slds-truncate" title="{! c.Email__c}">
                                                         {! c.Email__c}
                                                     </div>
                                                 </td>
-                                                <!--PHONE-->
+                                                <!--Level-->
                                                 <td scope="row" data-label="{!$ObjectType.Student__c.fields.Level__c.Label}">
                                                     <div class="slds-truncate" title="{! c.Level__c}">
                                                         {! c.Level__c}
                                                     </div>
                                                 </td>
-                                                <!--SCORES-->
+                                                <!--Scores-->
                                                 <td scope="row" data-label="{!$ObjectType.Student__c.fields.Scores__c.Label}">
                                                     <div class="slds-truncate" title="{! c.Scores__c}">
                                                         {! c.Scores__c}
                                                     </div>
                                                 </td>
-                                                 <!--CUSTOM ACTION GOOGLE MAP-->
+                                                <!--Custom Image-->
+                                                <td scope="col" data-label="Image">
+                                                    <div class="slds-truncate" title="Image">
+                                                        <apex:commandLink action="{!URLFOR($Page.SM_UploadImagePage,null, [ id=c.Id ])}" value="Upload Image"/>
+                                                    </div>
+                                                </td>
+                                                 <!--Custom Action Google Map-->
                                                 <td scope="col" data-label="Map">
                                                     <div class="slds-truncate" title="Map">
-                                                        <apex:commandLink action="{!URLFOR($Page.SM_GoogleMap,null, [ id=c.Id ])}" value="Google Map"/>
+                                                        <apex:commandLink action="{!URLFOR($Page.SM_InfoGoogleMapPage,null, [ id=c.Id ])}" value="Google Map"/>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -183,7 +194,7 @@
                     </div>
                 </apex:form>
             <div style="height: 10px"></div>
-            <!-- PAGINATION START -->
+            <!--Pagination Start -->
             <div class="slds-clearfix">
                 <apex:pageBlock >
                     <apex:pageBlockButtons location="bottom">
@@ -215,9 +226,9 @@
                     </apex:pageBlockButtons>
                 </apex:pageBlock>
             </div>
-            <!-- PAGINATION END-->
+            <!-- Pagination End-->
 
-            <!-- FOOTER -->
+            <!-- Footer -->
             <div>
                 <footer role="contentinfo" class="slds-p-around--large">
                     <div class="slds-grid slds-grid--align-spread">
