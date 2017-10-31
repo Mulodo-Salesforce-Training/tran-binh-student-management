@@ -37,6 +37,10 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>SM_SendEmailUpdateLevelUtil</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>SM_TriggerDoubleStudentSkillsTest</apexClass>
         <enabled>false</enabled>
     </classAccesses>

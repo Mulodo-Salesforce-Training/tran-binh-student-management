@@ -10,6 +10,7 @@
         <members>SM_ListStudentScoringSkillsCCTest</members>
         <members>SM_ListStudentsCC</members>
         <members>SM_ListStudentsCCTest</members>
+        <members>SM_SendEmailUpdateLevelUtil</members>
         <members>SM_TriggerDoubleStudentSkillsTest</members>
         <members>SM_UpdatePointsStudentBatch</members>
         <members>SM_UpdatePointsStudentBatchTest</members>
@@ -55,6 +56,10 @@
         <members>Student_Scoring_Skills__c</members>
         <members>Upload_File_CSV</members>
         <name>CustomTab</name>
+    </types>
+    <types>
+        <members>unfiled$public/Send_Email_Students</members>
+        <name>EmailTemplate</name>
     </types>
     <types>
         <members>*</members>

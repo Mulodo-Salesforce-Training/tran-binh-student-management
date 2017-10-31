@@ -39,5 +39,15 @@ public class SM_LevelStudentBatch implements Database.Batchable<sObject>{
      * @param: jobId (type: Database.BatchableContext)
      */
 	public Void finish(Database.BatchableContext jobId) {
+        AsyncApexJob job = [SELECT Id, CreatedById, TotalJobItems FROM AsyncApexJob WHERE  Id =: jobId.getJobId()];
+        User user   = [SELECT Id, Email FROM User WHERE Id =: job.CreatedById];
+        List<Student__c> listStudents  = [SELECT Email__c FROM Student__c];
+        String emailTemplate = 'Send Email Students';
+        try {
+            SM_SendEmailUpdateLevelUtil.sendMailAdminUsingSFTemplate(user, emailTemplate);
+            SM_SendEmailUpdateLevelUtil.sendMailToStudentUsingSFTemplate(listStudents, emailTemplate);
+        } catch (Exception e) {
+            ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR, 'Error occured: '+ e.getMessage()));
+        }
 	}
 }

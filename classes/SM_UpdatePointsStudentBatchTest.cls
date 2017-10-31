@@ -55,7 +55,7 @@ private class SM_UpdatePointsStudentBatchTest {
 		Test.startTest();
 			SM_UpdatePointsStudentBatch skillBatch = new SM_UpdatePointsStudentBatch();
 			Database.executeBatch(skillBatch,100);
-		Test.stopTest();
+        Test.stopTest();
 
 		System.assertEquals(10, [SELECT COUNT() FROM Student_Scoring_Skills__c], 'There should 10 student scoring skill should be insert');
 	}

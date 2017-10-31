@@ -61,8 +61,10 @@ global with sharing class SM_ListStudentsCC {
 		}
 
 		try {
+            SM_LevelStudentBatch skillBatch = new SM_LevelStudentBatch();
+            Database.executeBatch(skillBatch,100);
 			//Call SM_LevelStudentBatch for Student Level and Skill Executed
-			System.scheduleBatch(new SM_LevelStudentBatch(), 'Student Level and Skill Executed',1);
+			//System.scheduleBatch(new SM_LevelStudentBatch(), 'Student Level and Skill Executed',1);
 		} catch (AsyncException e) {
 			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.FATAL, 'This action has already been scheduled. Detail Message: ' + e.getMessage()));
 			return;

@@ -80,7 +80,7 @@ global class SM_UpdatePointsStudentBatch implements Database.Batchable<sObject> 
 
             try {
                 //Insert record to Student Scoring Skills
-                insert insertStudentSkill;
+                upsert insertStudentSkill;
             } catch (DmlException e) {
 
                 //Error message of DmlException when insert error.

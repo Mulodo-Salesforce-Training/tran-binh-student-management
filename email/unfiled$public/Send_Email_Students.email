@@ -1,0 +1,15 @@
+Dear {!Student__c.First_Name__c},
+
+All of us at GenWatt are glad to have {!Student__c.Name} as a user.
+
+You can also contact GenWatt on the following numbers: 
+
+Main: 810-545-1000
+Sales: 810-545-1222
+Customer Service & Support: 810-545-1333
+Fax: 810-545-1001
+
+I am confident GenWatt will serve you well and hope to see our relationship grow over the years.
+
+Best Regards, 
+{!User.Name}
