@@ -1,4 +1,4 @@
-<apex:page controller="SM_ListStudentsCC">
+<apex:page controller="SM_ListStudentsCC" tabStyle="List_Students__tab">
     <!--Add XMLNS to use SVG from VISUALFORCE-->
     <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
     <head>
@@ -8,13 +8,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <!-- Import the Design System style sheet -->
         <apex:slds />
+        <!-- <apex:includescript value="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"/>-->
         <apex:includeScript value="{!URLFOR($Resource.SM_angular_min_js)}"/>
     </head>
 
     <body ng-app="mainApp">
-
     <!--Wrap all div in this to apply stylesheet from slds-->
-        <div class="slds-scope"  ng-controller="listStudentController">
+        <div class="slds-scope" ng-controller="listStudentController">
             <div class="slds-page-header">
                 <div class="slds-media">
                     <div class="slds-media__body">
@@ -28,7 +28,7 @@
 
             <!--Button List-->
             <div class="slds-grid slds-grid_align-end slds-m-top_x-small slds-m-bottom_x-small">
-                <div class="slds-button-group" role="group"> <!--FORMAT AS BUTTON GROUP-->
+                <div class="slds-button-group" role="group"> <!--Button of group-->
                     <apex:outputLink value="{!URLFOR($Action.Student__c.New)}" styleClass="slds-button slds-button_neutral">
                         New
                     </apex:outputLink>
@@ -38,7 +38,7 @@
             </div>
             <!--List Students-->
             <table class="slds-table slds-table_bordered slds-table_resizable-cols slds-table_fixed-layout">
-                    <thead>
+                  <thead>
                         <tr class="slds-text-title_caps slds-line-height_reset">
                             <!--Checkbox-->
                             <th class="slds-text-align_right">
@@ -70,19 +70,19 @@
                                     {!$ObjectType.Student__c.fields.Country__c.Label}
                                 </div>
                             </th>
-                            <!--City-->
+                            <!--Phone-->
                             <th scope="col">
                                 <div class="slds-truncate" title="{!$ObjectType.Student__c.fields.Phone__c.Label}">
                                     {!$ObjectType.Student__c.fields.Phone__c.Label}
                                 </div>
                             </th>
-                            <!--State/Province-->
+                            <!--Email-->
                             <th scope="col">
                                 <div class="slds-truncate" title="{!$ObjectType.Student__c.fields.Email__c.Label}">
                                     {!$ObjectType.Student__c.fields.Email__c.Label}
                                 </div>
                             </th>
-                            <!--Phone-->
+                            <!--Level-->
                             <th scope="col">
                                 <div class="slds-truncate" title="{!$ObjectType.Student__c.fields.Level__c.Label}">
                                     {!$ObjectType.Student__c.fields.Level__c.Label}
@@ -97,19 +97,19 @@
                             <!--Status-->
                             <th scope="col">
                                 <div class="slds-truncate" title="{!$ObjectType.Student__c.fields.Status__c.Label}">
-                                        {!$ObjectType.Student__c.fields.Status__c.Label}
+                                     {!$ObjectType.Student__c.fields.Status__c.Label}
                                 </div>
                             </th>
                             <!--Upload image-->
                             <th scope="col">
                                 <div class="slds-truncate" title="Upload Image">
-                                    Upload Image
+                                     Upload Image
                                 </div>
                             </th>
                             <!--Info google map-->
                             <th scope="col">
                                 <div class="slds-truncate" title="Google Map">
-                                    Google Map
+                                     Google Map
                                 </div>
                             </th>
                         </tr>
@@ -121,17 +121,16 @@
                         <!--CHECKBOX-->
                         <td class="slds-text-align_right" role="gridcell">
                             <span class="slds-checkbox">
-                              <input type="checkbox" name="options" ng-attr-id="{{'checkbox-' + $index}}"  ng-attr-checked="{{selectedList.has(student.Id)}}" ng-click="onSelectStudent(student.Id)"/>
-                              <label class="slds-checkbox__label" ng-attr-for="{{'checkbox-'+ $index}}">
-                                <span class="slds-checkbox_faux"></span>
-                                <span class="slds-form-element__label slds-assistive-text">Select item 1</span>
-                              </label>
+                                <input type="checkbox" name="options" ng-attr-id="{{'checkbox-' + $index}}"  ng-attr-checked="{{selectedList.has(student.Id)}}" ng-click="onSelectStudent(student.Id)"/>
+                                <label class="slds-checkbox__label" ng-attr-for="{{'checkbox-'+ $index}}">
+                                    <span class="slds-checkbox_faux"></span>
+                                    <span class="slds-form-element__label slds-assistive-text">Select item 1</span>
+                                </label>
                             </span>
                         </td>
                         <!--Name-->
                         <td scope="col" data-label="{!$ObjectType.Student__c.fields.Name.Label}">
                             <div class="slds-truncate" ng-attr-title="{{student.Name}}">
-                                <!--<apex:commandLink action="{!URLFOR($Action.Student__c.View, c.Id)}" value="{!c.Name}"/>-->
                                 <span>{{student.Name}}</span>
                             </div>
                         </td>

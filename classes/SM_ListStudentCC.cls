@@ -1,5 +1,9 @@
+/**
+ * Class list student display
+ * Created by tran.binh@mulodo.com on 10/31/2017.
+ */
 global with sharing class SM_ListStudentCC {
-     // the size of list per page
+    // the size of list per page
     public final Integer LIST_SIZE_PAGE = 5;
     public Integer count { get; set; }
     public Integer totalSize { get; set; }
@@ -13,6 +17,8 @@ global with sharing class SM_ListStudentCC {
     public Blob file { get; set; }
     // custom size of list per page will be changed be user
     public Integer customListSize { get; set; }
+
+    //query load data of list student
     public List< Student__c > students {
         get {
             //Correct count after change size of list
@@ -36,8 +42,8 @@ global with sharing class SM_ListStudentCC {
     //result when click button First, Previous, Next, End
      public PageReference selectAction () {
 
-         //get paramater from apex with action click
-         String action = Apexpages.currentPage().getParameters().get('paramValue');
+        //get paramater from apex with action click
+        String action = Apexpages.currentPage().getParameters().get('paramValue');
 
         if(action == 'First') {
             count = 0;
@@ -90,14 +96,14 @@ global with sharing class SM_ListStudentCC {
         return totalSize;
     }
 
-    // @RemoteAction
+    // get Status pickList of Student
     global static String getStatusPickList() {
         Schema.DescribeFieldResult statusField = Student__c.Status__c.getDescribe();
         List<Schema.PicklistEntry> skillPickList = statusField.getPicklistValues();
         return JSON.serialize(skillPickList);
     }
 
-    // method to execute batch in VF Page
+    //test case method to execute batch in VF Page
 	global static void batchStudentLevel() {
 		if (System.isBatch()) {
 			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.FATAL, 'This action has already executed'));
@@ -105,6 +111,7 @@ global with sharing class SM_ListStudentCC {
 		}
 
 		try {
+            //Call SM_LevelStudentBatch for Student Level and Skill Executed
 			System.scheduleBatch(new SM_LevelStudentBatch(), 'Student Level and Skill Executed',1);
 		} catch (AsyncException e) {
 			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.FATAL, 'This action has already been scheduled. Detail Message: ' + e.getMessage()));

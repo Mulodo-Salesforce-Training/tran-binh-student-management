@@ -1,4 +1,4 @@
-trigger SM_TriggerStudentStatus on Student__c ( after insert, after update ) {
+trigger SM_StudentStatusTrigger on Student__c ( after insert, after update ) {
 
     //Initialize student list
     List<Student__c> statusDisableStudent           = new List<Student__c>();

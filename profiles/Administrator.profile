@@ -37,22 +37,6 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>SM_RegisterStudent</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>SM_RegisterStudentScoringSkillCX</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>SM_RegisterStudentTest</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>SM_TriggerDoubleSkillTest</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
         <apexClass>SM_TriggerDoubleStudentSkillsTest</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -180,14 +164,6 @@
     </pageAccesses>
     <pageAccesses>
         <apexPage>SM_ListStudentsPage</apexPage>
-        <enabled>false</enabled>
-    </pageAccesses>
-    <pageAccesses>
-        <apexPage>SM_RegisterStudent</apexPage>
-        <enabled>false</enabled>
-    </pageAccesses>
-    <pageAccesses>
-        <apexPage>SM_RegisterStudentScoringSkillPage</apexPage>
         <enabled>false</enabled>
     </pageAccesses>
     <pageAccesses>

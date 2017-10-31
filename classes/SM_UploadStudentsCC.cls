@@ -1,10 +1,16 @@
+/**
+ * Upload file CSV of Students
+ * Created by tran.binh@mulodo.com on 2017/10/31
+ */
 public class SM_UploadStudentsCC {
     public string nameFile { get; set; }
     public Blob contentFile { get; set; }
     String[] filelines = new String[]{};
     List<Student__c> studentsUpload;
 
-    /**This function reads the CSV file and inserts records into the Student object. **/
+    /**
+     * This function reads the CSV file and inserts records into the Student object.
+     */
     public Pagereference readFile() {
         try {
             //Convert the uploaded file which is in BLOB format into a string
@@ -48,7 +54,9 @@ public class SM_UploadStudentsCC {
         return null;
     }
 
-   /** This function sends back to the visualforce page the list of student records that were inserted **/
+    /**
+     * This function sends back to the visualforce page the list of student records that were inserted
+     */
     public List<Student__c> getUploadedStudents() {
         if (studentsUpload!= NULL) {
             if (studentsUpload.size() > 0)
@@ -59,7 +67,10 @@ public class SM_UploadStudentsCC {
             return null;
         }
     }
-    /** This function convert to String **/
+
+    /**
+     * This function convert to String
+     */
     public static String blobToString(Blob input, String inCharset){
         String hex = EncodingUtil.convertToHex(input);
         System.assertEquals(0, hex.length() & 1);

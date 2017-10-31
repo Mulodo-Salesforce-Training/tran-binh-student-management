@@ -13,7 +13,7 @@
         </head>
 
         <body ng-app="mainApp">
-            <!--Wrap all div in this to apply stylesheet from slds-->
+            <!-- Wrap all div in this to apply stylesheet from slds-->
             <apex:form >
                     <div class="slds-scope" ng-controller="listStudentController">
                         <div class="slds-page-header">

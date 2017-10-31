@@ -1,5 +1,9 @@
+/**
+ * List Student Scoring Skill class
+ * Created by tran.binh@mulodo.com on 2017/10/31
+ */
 public with sharing class SM_ListStudentScoringSkillCC {
-     // the size of list per page
+    // the size of list per page
     public final Integer LIST_SIZE_PAGE = 5;
     public Integer count { get; set; }
     public Integer totalSize { get; set; }
@@ -20,18 +24,22 @@ public with sharing class SM_ListStudentScoringSkillCC {
         }
     }
 
-    // Set the total size in the constructor
+    /**
+     * Set the total size in the constructor
+     */
     public SM_ListStudentScoringSkillCC () {
         totalSize      = [SELECT count() FROM Student_Scoring_Skill__c];
         count          = 0;
         customListSize = LIST_SIZE_PAGE;
     }
 
-    //result when click button First, Previous, Next, End
+    /**
+     * result when click button First, Previous, Next, End
+     */
      public PageReference selectAction () {
 
-         //get paramater from apex with action click
-         String action = Apexpages.currentPage().getParameters().get('paramValue');
+        //get paramater from apex with action click
+        String action = Apexpages.currentPage().getParameters().get('paramValue');
 
         if(action == 'First') {
             count = 0;
@@ -46,12 +54,16 @@ public with sharing class SM_ListStudentScoringSkillCC {
         return null;
     }
 
-    // This will disable the previous and first buttons
+    /**
+     * This will disable the previous and first buttons
+     */
     public Boolean getDisablePrevious () {
         return count > 0 ? false : true;
     }
 
-    // This will disable the next and end buttons
+    /**
+     * This will disable the next and end buttons
+     */
     public Boolean getDisableNext () {
         if ( count + customListSize < totalSize ) {
             return false;
@@ -59,7 +71,9 @@ public with sharing class SM_ListStudentScoringSkillCC {
             return true;
     }
 
-    // This will get current page
+    /**
+     * This will get current page
+     */
     public Integer getCurrentPage () {
         if( totalSize == 0 ){
             return 0;
@@ -67,7 +81,9 @@ public with sharing class SM_ListStudentScoringSkillCC {
         return count / customListSize + 1;
     }
 
-    // This will get current page
+    /**
+     * This will get total page
+     */
     public Integer getTotalPage () {
         if( totalSize == 0){
             return 0;
@@ -79,7 +95,9 @@ public with sharing class SM_ListStudentScoringSkillCC {
         return totalSize / customListSize;
     }
 
-    //This will get total record
+    /**
+     * This will get total record
+     */
     public Integer getTotalRecord () {
         return totalSize;
     }

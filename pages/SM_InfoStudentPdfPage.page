@@ -19,6 +19,12 @@
                         </div>
                     </div>
                 </div>
+                <apex:pageBlock mode="maindetail">
+                    <apex:pageblocksection columns="1" rendered="{!displaying}">
+                        <apex:image height="150" value="{!URLFOR($Action.Attachment.Download, currentPicture)}" rendered="{!currentPicture != null}"/>
+                        <apex:outputPanel rendered="{!currentPicture == null}"><em>No picture currently available</em></apex:outputPanel>
+                    </apex:pageblocksection>
+                </apex:pageBlock>
                 <apex:pageBlock id="student_list_table">
                     <apex:outputPanel id="StudentTable">
                         <!--List Students-->

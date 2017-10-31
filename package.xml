@@ -10,10 +10,6 @@
         <members>SM_ListStudentScoringSkillsCCTest</members>
         <members>SM_ListStudentsCC</members>
         <members>SM_ListStudentsCCTest</members>
-        <members>SM_RegisterStudent</members>
-        <members>SM_RegisterStudentScoringSkillCX</members>
-        <members>SM_RegisterStudentTest</members>
-        <members>SM_TriggerDoubleSkillTest</members>
         <members>SM_TriggerDoubleStudentSkillsTest</members>
         <members>SM_UpdatePointsStudentBatch</members>
         <members>SM_UpdatePointsStudentBatchTest</members>
@@ -28,19 +24,15 @@
         <members>SM_ListStudentScoringSkillPage</members>
         <members>SM_ListStudentScoringSkillsPage</members>
         <members>SM_ListStudentsPage</members>
-        <members>SM_RegisterStudent</members>
-        <members>SM_RegisterStudentScoringSkillPage</members>
         <members>SM_StudentLevelPage</members>
         <members>SM_UploadImagePage</members>
         <members>SM_UploadStudentsPage</members>
         <name>ApexPage</name>
     </types>
     <types>
-        <members>SM_TriggerDoubleSkill</members>
-        <members>SM_TriggerDoubleStudentSkills</members>
-        <members>SM_TriggerStudentActive</members>
-        <members>SM_TriggerStudentStatus</members>
-        <members>SM_TriggerUpdateStudentPoints</members>
+        <members>SM_StudentActiveTrigger</members>
+        <members>SM_StudentStatusTrigger</members>
+        <members>SM_UpdateStudentPointsTrigger</members>
         <name>ApexTrigger</name>
     </types>
     <types>
