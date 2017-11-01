@@ -1,6 +1,8 @@
 <apex:page standardController="Student__c" tabStyle="Image_Upload__tab" extensions="SM_UploadImageCX"   showHeader="true" standardStyleSheets="true" sidebar="false">
     <!-- Upload image to Attachment of Student-->
     <apex:form id="contentForm">
+        <apex:sectionHeader title="Upload Image file"/>
+        <apex:pagemessages />
         <div style="height:170px;">
             <apex:pageBlock mode="maindetail">
                 <apex:pageblocksection columns="1" rendered="{!displaying}">

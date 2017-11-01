@@ -18,7 +18,9 @@ global with sharing class SM_ListStudentCC {
     // custom size of list per page will be changed be user
     public Integer customListSize { get; set; }
 
-    //query load data of list student
+    /**
+     * Query load data of list student
+     */
     public List< Student__c > students {
         get {
             //Correct count after change size of list
@@ -32,14 +34,18 @@ global with sharing class SM_ListStudentCC {
         }
     }
 
-    // Set the total size in the constructor
+    /**
+     * Set the total size in the constructor
+     */
     public SM_ListStudentCC () {
         totalSize      = [SELECT count() FROM Student__c];
         count          = 0;
         customListSize = LIST_SIZE_PAGE;
     }
 
-    //result when click button First, Previous, Next, End
+    /**
+     * Result when click button First, Previous, Next, End
+     */
      public PageReference selectAction () {
 
         //get paramater from apex with action click
@@ -58,12 +64,16 @@ global with sharing class SM_ListStudentCC {
         return null;
     }
 
-    // This will disable the previous and first buttons
+    /**
+     * This will disable the previous and first buttons
+     */
     public Boolean getDisablePrevious () {
         return count > 0 ? false : true;
     }
 
-    // This will disable the next and end buttons
+    /**
+     * This will disable the next and end buttons
+     */
     public Boolean getDisableNext () {
         if ( count + customListSize < totalSize ) {
             return false;
@@ -71,7 +81,9 @@ global with sharing class SM_ListStudentCC {
             return true;
     }
 
-    // This will get current page
+    /**
+     * This will get current page
+     */
     public Integer getCurrentPage () {
         if( totalSize == 0 ){
             return 0;
@@ -79,7 +91,9 @@ global with sharing class SM_ListStudentCC {
         return count / customListSize + 1;
     }
 
-    // This will get total page
+    /**
+     * This will get total page
+     */
     public Integer getTotalPage () {
         if( totalSize == 0){
             return 0;
@@ -91,19 +105,25 @@ global with sharing class SM_ListStudentCC {
         return totalSize / customListSize;
     }
 
-    // This will get total record
+    /**
+     * This will get total record
+     */
     public Integer getTotalRecord () {
         return totalSize;
     }
 
-    // get Status pickList of Student
+    /**
+     * get Status pickList of Student
+     */
     global static String getStatusPickList() {
         Schema.DescribeFieldResult statusField = Student__c.Status__c.getDescribe();
         List<Schema.PicklistEntry> skillPickList = statusField.getPicklistValues();
         return JSON.serialize(skillPickList);
     }
 
-    //test case method to execute batch in VF Page
+    /**
+     * test case method to execute batch in VF Page
+     */
 	global static void batchStudentLevel() {
 		if (System.isBatch()) {
 			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.FATAL, 'This action has already executed'));

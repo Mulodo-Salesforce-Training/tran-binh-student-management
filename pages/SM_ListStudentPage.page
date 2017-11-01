@@ -31,7 +31,7 @@
                             <apex:outputLink value="{!URLFOR($Action.Student__c.New)}" styleClass="slds-button slds-button_neutral">
                                 New
                             </apex:outputLink>
-                            <a class="slds-button slds-button_neutral" href="apex/UploadAccounts">Import</a>
+                            <a class="slds-button slds-button_neutral" href="apex/SM_UploadStudentsPage">Import</a>
                             <button class="slds-button slds-button_neutral" ng-click="onChangeStatusClick()">Change Status</button>
                         </div>
                         <apex:pageBlock id="student_list_table">

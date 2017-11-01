@@ -13,12 +13,10 @@ public class SM_SendEmailUpdateLevelUtil {
         }
         // skipped if student is null
 		EmailTemplate emailTemplate;
-		system.debug(emailTemplate);
 
 		try {
             // select Id of template Email
 			emailTemplate = [SELECT Id FROM EmailTemplate WHERE Name=: templateName];
-			system.debug(emailTemplate);
 		} catch(QueryException e) {
             system.debug('Load template error: ' + e.getMessage());
 		}
@@ -40,10 +38,11 @@ public class SM_SendEmailUpdateLevelUtil {
      * Send Mail To Student Using SF Template Method
      */
 	public static void sendMailToStudentUsingSFTemplate(List<Student__c> students, String templateName) {
-		if (students == null) {
+		// skipped if students == null
+        if (students == null) {
 			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR, 'Email will not be sent because of empty student List'));
 			return;
-		} // skipped if candidate == null
+		}
 		EmailTemplate emailTemplate;
         // email in this list will not be sent
 		List<Messaging.SingleEmailMessage>  willRollBackMailList = new List<Messaging.SingleEmailMessage>();
@@ -65,7 +64,7 @@ public class SM_SendEmailUpdateLevelUtil {
 			mail.setWhatId(receiver.Id); // Id Of Student assign
 			willRollBackMailList.add(mail);
 		}
-		//Rollback
+		//Rollback mail list
 		sendEmailUsingTemplateAfterRollBack(willRollBackMailList);
 	}
 

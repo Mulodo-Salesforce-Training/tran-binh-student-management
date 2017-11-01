@@ -3,10 +3,10 @@
  * Created by tran.binh@mulodo.com on 2017/10/31
  */
 public class SM_UploadStudentsCC {
-    public string nameFile { get; set; }
-    public Blob contentFile { get; set; }
+    public string nameFile {get;set;}
+    public Blob contentFile {get;set;}
     String[] filelines = new String[]{};
-    List<Student__c> studentsUpload;
+    List<Student__c> stdstoupload;
 
     /**
      * This function reads the CSV file and inserts records into the Student object.
@@ -18,27 +18,28 @@ public class SM_UploadStudentsCC {
             //Now sepatate every row of the excel file
             filelines = nameFile.split('\n');
             //Iterate through every line and create a Student record for each row
-            studentsUpload = new List<Student__c>();
+            stdstoupload = new List<Student__c>();
             for ( Integer i=0;i<filelines.size();i++ ) {
-                String[] inputValues = new String[]{};
-                inputValues          = filelines[i].split(',');
+
+                String[] inputvalues = new String[]{};
+                inputvalues          = filelines[i].split(',');
 
                 Student__c s         = new Student__c();
-                s.First_Name__c      = inputValues[0];
-                s.Last_Name__c       = inputValues[1];
-                Date newDate         = Date.valueOf(inputValues[2]);
+                s.First_Name__c      = inputvalues[0];
+                s.Last_Name__c       = inputvalues[1];
+                Date newDate         = Date.valueOf(inputvalues[2]);
                 s.Birthday__c        = newDate;
-                s.Phone__c           = inputValues[3];
-                s.Email__c           = inputValues[4];
-                s.Street__c          = inputValues[5];
-                s.City__c            = inputValues[6];
-                s.State_Province__c  = inputValues[7];
-                s.Zip_Postal_Code__c = inputValues[8];
-                s.Country__c         = inputValues[9];
-                s.Skills__c          = inputValues[10];
-                s.Level__c           = inputValues[11];
-                s.Status__c          = inputValues[12];
-                studentsUpload.add(s);
+                s.Phone__c           = inputvalues[3];
+                s.Email__c           = inputvalues[4];
+                s.Street__c          = inputvalues[5];
+                s.City__c            = inputvalues[6];
+                s.State_Province__c  = inputvalues[7];
+                s.Zip_Postal_Code__c = inputvalues[8];
+                s.Country__c         = inputvalues[9];
+                s.Skills__c          = inputvalues[10];
+                s.Level__c           = inputvalues[11];
+                s.Status__c          = inputvalues[12];
+                stdstoupload.add(s);
             }
         } catch(Exception e) {
             ApexPages.Message errormsg = new ApexPages.Message(ApexPages.severity.ERROR,'An error has occured reading the CSV file' + e.getMessage());
@@ -46,7 +47,7 @@ public class SM_UploadStudentsCC {
         }
         //Finally, insert the collected records
         try {
-            insert studentsUpload;
+            insert stdstoupload;
         } catch (Exception e) {
             ApexPages.Message errormsg = new ApexPages.Message(ApexPages.severity.ERROR,'An error has occured inserting the records'+e.getMessage());
             ApexPages.addMessage(errormsg);
@@ -57,10 +58,11 @@ public class SM_UploadStudentsCC {
     /**
      * This function sends back to the visualforce page the list of student records that were inserted
      */
-    public List<Student__c> getUploadedStudents() {
-        if (studentsUpload!= NULL) {
-            if (studentsUpload.size() > 0)
-                return studentsUpload;
+    public List<Student__c> getuploadedStudents()
+    {
+        if (stdstoupload!= NULL) {
+            if (stdstoupload.size() > 0)
+                return stdstoupload;
             else
                 return null;
         } else {

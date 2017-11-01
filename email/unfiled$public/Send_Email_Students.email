@@ -1,10 +1,9 @@
-Dear {!Student__c.First_Name__c},
+Dear {!Student__c.Last_Name__c},
 
-All of us at GenWatt are glad to have {!Student__c.Name} as a user.
-
-You can also contact GenWatt on the following numbers: 
-
-Main: 810-545-1000
+There is a change in score so your level can be changed.
+Please check {!Student__c.Name} of information level offline!
+You can also contact Admin on the following numbers: 
+Main: 0165-625-9452
 Sales: 810-545-1222
 Customer Service & Support: 810-545-1333
 Fax: 810-545-1001

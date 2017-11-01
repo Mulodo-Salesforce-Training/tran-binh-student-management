@@ -45,11 +45,14 @@ public with sharing class SM_UploadImageCX {
 
         // Now, we save the new blob
         Attachment attachment = new Attachment(parentId = pageStudent.Id, name = fixedFileName, body = profilePicFile);
-        system.debug(attachment);
-        insert attachment;
-
-        currentPicture = attachment.Id;
-        displaying = true;
+        try{
+            insert attachment;
+            currentPicture = attachment.Id;
+            displaying = true;
+        } catch(DmlException e){
+            ApexPages.Message errormsg = new ApexPages.Message(ApexPages.severity.ERROR,'An error has occured inserting the records(Note:only upload file image)'+e.getMessage());
+            ApexPages.addMessage(errormsg);
+        }
         return null;
     }
 
